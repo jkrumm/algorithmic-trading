@@ -26,7 +26,7 @@ Ticker = Query()
 
 @app.route('/')
 def home():
-    return render_template('pages/placeholder.home.html', signal=testSignalDb.all())
+    return render_template('pages/placeholder.home.html', signal=signalDB.all())
 
 
 @app.route('/about')
