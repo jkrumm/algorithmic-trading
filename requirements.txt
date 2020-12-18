@@ -8,6 +8,7 @@ coverage
 asyncio
 ccxt
 tinydb
+python-dateutil
 # ecdsa
 # paramiko
 # pycrypto
