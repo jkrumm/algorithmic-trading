@@ -1,28 +1,26 @@
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 # Imports
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request
-# from flask.ext.sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, request, jsonify
+from tinydb import TinyDB, Query
 import logging
 from logging import Formatter, FileHandler
+
 from forms import *
 import os
 
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 # App Config.
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 
 app = Flask(__name__)
 app.config.from_object('config')
-#db = SQLAlchemy(app)
 
-# Automatically tear down SQLAlchemy.
-'''
-@app.teardown_request
-def shutdown_session(exception=None):
-    db_session.remove()
-'''
+db = TinyDB('db.json')
+
+testSignalDb = db.table('testSignal')
+Ticker = Query()
 
 # Login required decorator.
 '''
@@ -36,10 +34,11 @@ def login_required(test):
             return redirect(url_for('login'))
     return wrap
 '''
-#----------------------------------------------------------------------------#
-# Controllers.
-#----------------------------------------------------------------------------#
 
+
+# ----------------------------------------------------------------------------#
+# Controllers.
+# ----------------------------------------------------------------------------#
 
 @app.route('/')
 def home():
@@ -68,18 +67,34 @@ def forgot():
     form = ForgotForm(request.form)
     return render_template('forms/forgot.html', form=form)
 
-# Error handlers.
 
+@app.route('/test/v1/postSignal', methods=['POST'])
+def test_post_signal_v1():
+    content = request.get_json()
+    print(request.get_json())
+    testSignalDb.insert(content)
+    return jsonify(content)
+
+
+@app.route('/test/v1/getSignal/<ticker>', methods=['GET'])
+def test_get_signal_v1(ticker):
+    if ticker == "all":
+        return jsonify(testSignalDb.all())
+    else:
+        return jsonify(testSignalDb.search(Ticker.ticker == ticker))
+
+
+# Error handlers.
 
 @app.errorhandler(500)
 def internal_error(error):
-    #db_session.rollback()
     return render_template('errors/500.html'), 500
 
 
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('errors/404.html'), 404
+
 
 if not app.debug:
     file_handler = FileHandler('error.log')
@@ -91,9 +106,9 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('errors')
 
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 # Launch.
-#----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
 
 # Default port:
 if __name__ == '__main__':

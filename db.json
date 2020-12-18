@@ -1,0 +1,134 @@
+{
+  "test": {
+    "1": {
+      "type": "apple",
+      "count": 10
+    },
+    "2": {
+      "type": "peach",
+      "count": 3
+    },
+    "3": {
+      "type": "apple",
+      "count": 10
+    },
+    "4": {
+      "type": "peach",
+      "count": 3
+    },
+    "5": {
+      "type": "apple",
+      "count": 10
+    },
+    "6": {
+      "type": "peach",
+      "count": 3
+    },
+    "7": {
+      "type": "apple",
+      "count": 10
+    },
+    "8": {
+      "type": "peach",
+      "count": 3
+    },
+    "9": {
+      "type": "apple",
+      "count": 10
+    },
+    "10": {
+      "type": "peach",
+      "count": 3
+    },
+    "11": {
+      "type": "apple",
+      "count": 10
+    },
+    "12": {
+      "type": "peach",
+      "count": 3
+    },
+    "13": {
+      "type": "apple",
+      "count": 10
+    },
+    "14": {
+      "type": "peach",
+      "count": 3
+    },
+    "15": {
+      "type": "apple",
+      "count": 10
+    },
+    "16": {
+      "type": "peach",
+      "count": 3
+    },
+    "17": {
+      "type": "apple",
+      "count": 10
+    },
+    "18": {
+      "type": "peach",
+      "count": 3
+    },
+    "19": {
+      "type": "apple",
+      "count": 10
+    },
+    "20": {
+      "type": "peach",
+      "count": 3
+    },
+    "21": {
+      "type": "apple",
+      "count": 10
+    },
+    "22": {
+      "type": "peach",
+      "count": 3
+    },
+    "23": {
+      "type": "apple",
+      "count": 10
+    },
+    "24": {
+      "type": "peach",
+      "count": 3
+    },
+    "25": {
+      "type": "apple",
+      "count": 10
+    },
+    "26": {
+      "type": "peach",
+      "count": 3
+    },
+    "27": {
+      "type": "apple",
+      "count": 10
+    },
+    "28": {
+      "type": "peach",
+      "count": 3
+    }
+  },
+  "testSignal": {
+    "1": {
+      "ticker": "ETHUSD",
+      "exchange": "KRAKEN",
+      "interval": "1",
+      "time": "2020-12-18T09:32:53Z",
+      "action": "sell",
+      "price": "650.88"
+    },
+    "2": {
+      "ticker": "XBTUSD",
+      "exchange": "KRAKEN",
+      "interval": "1",
+      "time": "2020-12-18T09:45:02Z",
+      "action": "buy",
+      "price": "23122.100000000002"
+    }
+  }
+}

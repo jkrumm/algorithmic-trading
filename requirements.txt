@@ -1,8 +1,13 @@
+Flask
 Fabric
+tinydb
 Flask-SQLAlchemy
 Flask-WTF
 WTForms
 coverage
+asyncio
+ccxt
+tinydb
 # ecdsa
 # paramiko
 # pycrypto
