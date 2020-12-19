@@ -37,11 +37,12 @@ print(df.head(5))
 duplicates = []
 
 for index, row in df.iterrows():
-    if len(signalDB.search((q.time == row['Date/Time']) & (q.ticker == ticker) & (q.interval == interval))) > 0:
+    if len(signalDB.search(
+            (q.time == row['Date/Time']) & (q.ticker.replace('XBT', 'BTC') == ticker) & (q.interval == interval))) > 0:
         duplicates.append(index)
     else:
         signalDB.insert({
-            "ticker": ticker,
+            "ticker": ticker.replace('XBT', 'BTC'),
             "exchange": "KRAKEN",
             "interval": interval,
             "time": row['Date/Time'],
