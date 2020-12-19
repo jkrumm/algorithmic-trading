@@ -9,6 +9,7 @@ asyncio
 ccxt
 tinydb
 python-dateutil
+pandas
 # ecdsa
 # paramiko
 # pycrypto

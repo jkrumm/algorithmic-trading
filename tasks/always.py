@@ -3,6 +3,7 @@ import asyncio
 import ccxt.async_support as ccxt
 import dateutil.parser
 from tinydb import TinyDB, Query
+import pandas as pd
 
 db = TinyDB('../db.json')
 signalDB = db.table('signal')
@@ -72,9 +73,9 @@ async def poll(tickers):
 
 async def run1():
     async for (symbol, ticker) in run_map_trade(
-            [["BTCUSD", 8], ["BTCUSD", 12], ["BTCUSD", 1], ["ETHUSD", 12], ["ETHBTC", 12], ["LINKUSD", 12],
-             ["LINKBTC", 12], ["XRPUSD", 12], ["LTCUSD", 12],
-             ["EOSUSD", 12], ["ADAUSD", 12]]):
+            [["BTCUSD", 480], ["BTCUSD", 720], ["BTCUSD", 1], ["ETHUSD", 720], ["ETHBTC", 720], ["LINKUSD", 720],
+             ["LINKBTC", 720], ["XRPUSD", 720], ["LTCUSD", 720],
+             ["EOSUSD", 720], ["ADAUSD", 720]]):
         print(symbol, ticker)
 
 
