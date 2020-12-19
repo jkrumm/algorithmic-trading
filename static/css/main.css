@@ -1,4 +1,3 @@
-
 /**
  * @file
  * Main stylesheet file.
@@ -9,24 +8,98 @@
  * Main elements
  ****************************************************************************/
 html {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
+
+@font-face {
+    font-family: Bender;
+    src: url("Blender-medium-webfont.woff");
+}
+
+html * {
+    font-family: Bender !important;
+}
+
 a {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 ::selection {
-  background: #555;
-  color: #FFF;
+    background: #555;
+    color: #FFF;
 }
+
 ::-moz-selection {
-  background: #555;
-  color: #FFF;
+    background: #555;
+    color: #FFF;
 }
+
 ::-webkit-selection {
-  background: #555;
-  color: #FFF;
+    background: #555;
+    color: #FFF;
 }
+
+h1 {
+    text-transform: uppercase;
+}
+
 /* Main elements end */
+
+/*****************************************************************************
+ * Coin List
+ ****************************************************************************/
+
+div.coin-list-wrapper {
+    display: flex;
+    flex: 1 1 0px;
+}
+
+div.coin-list-wrapper > div {
+    text-align: center;
+    flex: 1 1 0px;
+    border: 1px solid rgba(0, 0, 0, .6);
+    border-right: none;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+div.coin-list-wrapper > div:last-of-type {
+    border-right: 1px solid rgba(0, 0, 0, .6);
+}
+
+div.coin-list-wrapper > div:hover {
+    background-color: rgba(255, 255, 255, .075);
+}
+
+div.coin-list-wrapper h3 {
+    display: block;
+    font-size: 1.341rem;
+    margin: 0;
+}
+
+div.coin-list-wrapper .active {
+    background-color: rgba(255, 255, 255, .075);
+}
+
+/* Coin List end */
+
+/*****************************************************************************
+ * Signal Table
+ ****************************************************************************/
+
+div.signals-table-wrapper {
+    overflow-y: auto;
+    height: 500px;
+}
+
+div.signals-table-wrapper thead th {
+    position: sticky;
+    top: 0;
+    background: rgb(39, 43, 48);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+/* Signal Table end */
 
 
 /*****************************************************************************
@@ -34,3 +107,36 @@ a {
  ****************************************************************************/
 
 /* Various other styles end */
+td.green {
+    color: green;
+}
+
+td.red {
+    color: red;
+}
+
+nav {
+    border-bottom: 0;
+    border-top: 0;
+    width: 100%;
+}
+
+nav .navbar-brand {
+    text-transform: uppercase;
+    padding-right: 45px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    flex: 1 1 0px;
+}
+
+nav a.nav-link {
+    text-transform: uppercase;
+    min-width: 135px;
+    display: inline-block;
+    text-align: center;
+}

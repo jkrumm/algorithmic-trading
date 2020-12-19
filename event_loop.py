@@ -22,7 +22,7 @@ async def run_map_trade(tickers):
         symbol = tickers[i % len(tickers)]
         yield symbol, map_trade(symbol)
         i += 1
-        await asyncio.sleep(3)
+        await asyncio.sleep(5)
 
 
 def map_trade(ticker):
@@ -62,7 +62,6 @@ def map_trade(ticker):
         obj['duration'] = str(abs(date_now - date_signal))
         obj['price'] = float(x['price'])
         obj['current_price'] = float(symbol_obj['price'])
-        # ((df.iloc[index]['Price'] - df.iloc[index - 1]['Price']) / df.iloc[index - 1]['Price']) * 100.00
         val = ((symbol_obj['price'] - x['price']) / x['price']) * 100.00
         if x['action'] == "buy":
             obj['current_profit'] = float(val)

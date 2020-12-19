@@ -2,13 +2,121 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 
-    <div class="page-header">
-        <h1>Sticky footer with fixed navbar</h1>
+    <h1>Current Trades</h1>
+    <div class="trades-table-wrapper">
+        <table class="table table-hover table-sm table-dark">
+            <thead>
+            <tr>
+                <th class="">Pair</th>
+                <th class="">Action</th>
+                <th class="">Timeframe</th>
+                <th class="">Duration</th>
+                <th class="">Date</th>
+                <th class="">Profitability</th>
+                <th class="">Price</th>
+                <th class="">1D</th>
+                <th class="">1W</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for trade in trades %}
+                <tr>
+                    <td class="">{{ trade['symbol'] }}</td>
+                    <td class="">{{ trade['action'] }}</td>
+                    <td class="">{{ trade['timeframe'] }}</td>
+                    <td class="">{{ trade['duration'] }}</td>
+                    <td class="">{{ trade['date'] }}</td>
+                    <!--<td class="{{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']) }}</td>-->
+                    <td class="{{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
+                    <td class="">{{ trade['price'] }}</td>
+                    <td class="">{{ trade[''] }}</td>
+                    <td class="">{{ trade[''] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-    <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML
-        and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the
-        <code>.container</code>.</p>
 
-    {{ signal }}
+    <hr>
+
+    <h1>Signal History</h1>
+    <div class="coin-list-wrapper">
+        <div id="BTCUSD_8H"
+             class="{{ "active" if request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "480" }}">
+            <h3>BTCUSD</h3>
+            <span>8H</span>
+        </div>
+        <div id="BTCUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "720" }}">
+            <h3>BTCUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="BTCUSD_1D"
+             class="{{ "active" if request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "1" }}">
+            <h3>BTCUSD</h3>
+            <span>1D</span>
+        </div>
+        <div id="ETHUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "ETHUSD" and request.args.get('interval') == "720" }}">
+            <h3>ETHUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="ETHBTC_12H"
+             class="{{ "active" if request.args.get('symbol') == "ETHBTC" and request.args.get('interval') == "720" }}">
+            <h3>ETHBTC</h3>
+            <span>12H</span>
+        </div>
+        <div id="LINKUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "LINKUSD" and request.args.get('interval') == "720" }}">
+            <h3>LINKUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="LINKBTC_12H"
+             class="{{ "active" if request.args.get('symbol') == "LINKBTC" and request.args.get('interval') == "720" }}">
+            <h3>LINKBTC</h3>
+            <span>12H</span>
+        </div>
+        <div id="XRPUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "XRPUSD" and request.args.get('interval') == "720" }}">
+            <h3>XRPUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="LTCUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "LTCUSD" and request.args.get('interval') == "720" }}">
+            <h3>LTCUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="ADAUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "ADAUSD" and request.args.get('interval') == "720" }}">
+            <h3>ADAUSD</h3>
+            <span>12H</span>
+        </div>
+    </div>
+    <div class="signals-table-wrapper">
+        <table class="table table-hover table-sm table-dark">
+            <thead>
+            <tr>
+                <th class="">Pair</th>
+                <th class="">Action</th>
+                <th class="">Timeframe</th>
+                <th class="">Date</th>
+                <th class="">Profitability</th>
+                <th class="">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for s in signal|reverse %}
+                <tr>
+                    <td class="">{{ s['ticker'] }}</td>
+                    <td class="">{{ s['action'] }}</td>
+                    <td class="">{{ s['interval'] }}</td>
+                    <td class="">{{ s['time'] }}</td>
+                    <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "{:.2%}".format(s['profit']/100) }}</td>
+                    <td class="">{{ "{:.2f}".format(s['price']) }}$</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

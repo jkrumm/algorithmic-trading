@@ -17,6 +17,8 @@ app.config.from_object('config')
 db = TinyDB('db.json')
 
 signalDB = db.table('signal')
+tradesDB = db.table('trades')
+symbolsDb = db.table('symbols')
 Ticker = Query()
 
 
@@ -26,7 +28,18 @@ Ticker = Query()
 
 @app.route('/')
 def home():
-    return render_template('pages/placeholder.home.html', signal=signalDB.all())
+    symbol = request.args.get('symbol')
+    interval = request.args.get('interval')
+    if symbol is None:
+        symbol = "BTCUSD"
+    if interval is None:
+        interval = "720"
+    print(symbol, interval)
+    return render_template('pages/placeholder.home.html',
+                           args=request.args,
+                           signal=signalDB.search((Ticker.ticker == symbol) & (Ticker.interval == interval)),
+                           trades=tradesDB.all(),
+                           symbols=symbolsDb.all())
 
 
 @app.route('/about')
