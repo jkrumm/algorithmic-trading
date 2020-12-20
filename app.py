@@ -10,6 +10,7 @@ from logging import Formatter, FileHandler
 # ----------------------------------------------------------------------------#
 # App Config.
 # ----------------------------------------------------------------------------#
+from utils.helper import get_currencie
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -19,6 +20,7 @@ db = TinyDB('db.json')
 signalDB = db.table('signal')
 tradesDB = db.table('trades')
 symbolsDb = db.table('symbols')
+currencieDb = db.table('currencie')
 Ticker = Query()
 
 
@@ -39,7 +41,13 @@ def home():
                            args=request.args,
                            signal=signalDB.search((Ticker.ticker == symbol) & (Ticker.interval == interval)),
                            trades=tradesDB.all(),
-                           symbols=symbolsDb.all())
+                           symbols=symbolsDb.all(),
+                           currencie=currencieDb.all())
+
+
+@app.route('/marketcap')
+def marketcap():
+    return render_template('pages/marketcap.html', args=request.args, currencie=currencieDb.all())
 
 
 @app.route('/about')

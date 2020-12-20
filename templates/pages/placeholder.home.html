@@ -16,21 +16,22 @@
                 <th class="">Price</th>
                 <th class="">1D</th>
                 <th class="">1W</th>
+                <th class="">1M</th>
             </tr>
             </thead>
             <tbody>
             {% for trade in trades %}
                 <tr>
                     <td class="">{{ trade['symbol'] }}</td>
-                    <td class="">{{ trade['action'] }}</td>
+                    <td class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</td>
                     <td class="">{{ trade['timeframe'] }}</td>
                     <td class="">{{ trade['duration'] }}</td>
                     <td class="">{{ trade['date'] }}</td>
-                    <!--<td class="{{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']) }}</td>-->
                     <td class="{{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
                     <td class="">{{ trade['price'] }}</td>
-                    <td class="">{{ trade[''] }}</td>
-                    <td class="">{{ trade[''] }}</td>
+                    <td class="{{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
+                    <td class="{{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
+                    <td class="{{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -92,31 +93,91 @@
             <span>12H</span>
         </div>
     </div>
-    <div class="signals-table-wrapper">
-        <table class="table table-hover table-sm table-dark">
-            <thead>
-            <tr>
-                <th class="">Pair</th>
-                <th class="">Action</th>
-                <th class="">Timeframe</th>
-                <th class="">Date</th>
-                <th class="">Profitability</th>
-                <th class="">Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for s in signal|reverse %}
+    <div class="signal-wrapper">
+        <div class="signals-table-wrapper">
+            <table class="table table-hover table-sm table-dark">
+                <thead>
                 <tr>
-                    <td class="">{{ s['ticker'] }}</td>
-                    <td class="">{{ s['action'] }}</td>
-                    <td class="">{{ s['interval'] }}</td>
-                    <td class="">{{ s['time'] }}</td>
-                    <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "{:.2%}".format(s['profit']/100) }}</td>
-                    <td class="">{{ "{:.2f}".format(s['price']) }}$</td>
+                    <th class="">Pair</th>
+                    <th class="">Action</th>
+                    <th class="">Timeframe</th>
+                    <th class="">Date</th>
+                    <th class="">Profitability</th>
+                    <th class="">Price</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for s in signal|reverse %}
+                    <tr>
+                        <td class="">{{ s['ticker'] }}</td>
+                        <td class="{{ 'green' if s['action'] == "buy" else 'red' }} uppercase">{{ s['action'] }}</td>
+                        <td class="">{{ s['interval'] }}</td>
+                        <td class="">{{ s['time'] }}</td>
+                        <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "{:.2%}".format(s['profit']/100) }}</td>
+                        <td class="">{{ "{:.2f}".format(s['price']) }}$</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="signal-summary-wrapper">
+            <div class="grid">
+                <div class="cell">
+                    <span>Net Profit</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Gross Profit</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Gross Lost</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Buy & Hold Return</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Total Trades</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Win Rate</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Ratio Win/Loss</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Largest Win</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cell">
+                    <span>Largest Loss</span>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
