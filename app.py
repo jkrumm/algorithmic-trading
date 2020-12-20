@@ -39,8 +39,8 @@ def home():
     print(symbol, interval)
     return render_template('pages/placeholder.home.html',
                            args=request.args,
-                           signal=signalDB.search((Ticker.ticker == symbol) & (Ticker.interval == interval)),
                            trades=tradesDB.all(),
+                           signal=signalDB.search((Ticker.ticker == symbol) & (Ticker.interval == interval)),
                            symbols=symbolsDb.all(),
                            currencie=currencieDb.all())
 
