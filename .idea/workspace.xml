@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f97295e3-6a37-49e7-b885-6170fae1f24e" name="Default Changelist" comment="Frontend V1 Hotfix">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event_loop_hourly.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/event_loop_old.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/marketcap.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/algorithmic-trading.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/algorithmic-trading.iml" afterDir="false" />
+    <list default="true" id="f97295e3-6a37-49e7-b885-6170fae1f24e" name="Default Changelist" comment="New Algo for trades and curreny mappings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event_loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/event_loop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layouts/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/placeholder.home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/placeholder.home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/BTCUSD_8H.csv" beforeDir="false" afterPath="$PROJECT_DIR$/utils/BTCUSD_8H.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/tradingview_map_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/tradingview_map_signals.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +120,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608126447739</updated>
-      <workItem from="1608126829189" duration="70563000" />
+      <workItem from="1608126829189" duration="71406000" />
     </task>
     <task id="LOCAL-00001" summary="Add tinyDB &amp; postSignal, getSignal endpoint">
       <created>1608284936881</created>
@@ -193,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608410720411</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="New Algo for trades and curreny mappings">
+      <created>1608463923036</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608463923036</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -248,7 +240,8 @@
     <MESSAGE value="Changes to the event loop" />
     <MESSAGE value="Frontend V1" />
     <MESSAGE value="Frontend V1 Hotfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Frontend V1 Hotfix" />
+    <MESSAGE value="New Algo for trades and curreny mappings" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Algo for trades and curreny mappings" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
