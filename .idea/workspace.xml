@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f97295e3-6a37-49e7-b885-6170fae1f24e" name="Default Changelist" comment="Changes to the event loop">
+    <list default="true" id="f97295e3-6a37-49e7-b885-6170fae1f24e" name="Default Changelist" comment="Frontend V1 Hotfix">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_loop_hourly.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_loop_old.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/marketcap.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/algorithmic-trading.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/algorithmic-trading.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event_loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/event_loop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-3.1.1.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-theme-3.1.1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-theme.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/font-awesome-4.1.0.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/layout.main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/layout.main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/libs/bootstrap-3.1.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layouts/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/placeholder.home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/placeholder.home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/BTCUSD_8H.csv" beforeDir="false" afterPath="$PROJECT_DIR$/utils/BTCUSD_8H.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/tradingview_map_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/tradingview_map_signals.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,16 +93,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/pages" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/static/css" />
       <recent name="$PROJECT_DIR$/static/js/libs" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/utils" />
     </key>
   </component>
@@ -131,7 +135,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608126447739</updated>
-      <workItem from="1608126829189" duration="58901000" />
+      <workItem from="1608126829189" duration="70563000" />
     </task>
     <task id="LOCAL-00001" summary="Add tinyDB &amp; postSignal, getSignal endpoint">
       <created>1608284936881</created>
@@ -175,7 +179,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608375890362</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Frontend V1">
+      <created>1608410623829</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608410623829</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Frontend V1 Hotfix">
+      <created>1608410720411</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608410720411</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -228,7 +246,9 @@
     <MESSAGE value="Hotfix" />
     <MESSAGE value="Transform Tradingview backtests to signals" />
     <MESSAGE value="Changes to the event loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to the event loop" />
+    <MESSAGE value="Frontend V1" />
+    <MESSAGE value="Frontend V1 Hotfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Frontend V1 Hotfix" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

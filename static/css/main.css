@@ -86,17 +86,41 @@ div.coin-list-wrapper .active {
 /*****************************************************************************
  * Signal Table
  ****************************************************************************/
+.signal-wrapper {
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-top: 0;
+}
 
-div.signals-table-wrapper {
+.signals-table-wrapper {
+    width: 65%;
     overflow-y: auto;
     height: 500px;
 }
 
-div.signals-table-wrapper thead th {
+.signals-table-wrapper thead th {
     position: sticky;
     top: 0;
     background: rgb(39, 43, 48);
     border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.signal-summary-wrapper {
+    width: 35%;
+}
+
+.signal-summary-wrapper .grid {
+    display: flex; /* establish flex container */
+    flex-wrap: wrap; /* enable flex items to wrap */
+    justify-content: space-around;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.signal-summary-wrapper .cell {
+    flex: 0 0 33.33%; /* don't grow, don't shrink, width */
+    outline: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: rgb(39, 43, 48);
 }
 
 /* Signal Table end */
@@ -116,8 +140,8 @@ td.red {
 }
 
 nav {
-    border-bottom: 0;
-    border-top: 0;
+    border-bottom: 0 !important;
+    border-top: 0 !important;
     width: 100%;
 }
 
@@ -139,4 +163,8 @@ nav a.nav-link {
     min-width: 135px;
     display: inline-block;
     text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }
