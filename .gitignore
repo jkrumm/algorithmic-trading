@@ -4,3 +4,6 @@ env
 venv
 db.json
 .idea
+.env
+*.env
+/static/backtest/

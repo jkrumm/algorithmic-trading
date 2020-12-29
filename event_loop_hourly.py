@@ -1,13 +1,15 @@
 import datetime
 import asyncio
 import dateutil.parser
-from tinydb import TinyDB, Query
+import pymongo
 
-db = TinyDB('db.json')
-signalDB = db.table('signal')
-currencieDb = db.table('currencie')
-tradesDb = db.table('trades')
-q = Query()
+from config import MONGO_URI
+from utils.helper import transform_cursor, transform_cursor_dict
+
+m = pymongo.MongoClient(MONGO_URI)
+s = m['<dbname>'].signals
+t = m['<dbname>'].trades
+c = m['<dbname>'].currencies
 
 
 # Map trades from signal
@@ -23,17 +25,10 @@ async def run_map_trade(tickers):
 
 
 def map_trade(ticker):
-    # tradesDb.truncate()
-    # Get latest entry for symbol and timeframe
-    signals = signalDB.search((q.ticker == ticker[0]) & (q.interval == str(ticker[1])))
-    # Get pair entry
-    c = currencieDb.search(q.currency == ticker[0][:-3])
-    btc = currencieDb.search(q.currency == "BTC")[0]
-    if len(c) > 0:
-        c = c[0]
-    else:
-        print("Didn't find a currency in hourly task 1")
-        # TODO: Implement alert trigger
+    signals = transform_cursor(s.find({"ticker": ticker[0], "interval": str(ticker[1])}))
+    currencies = transform_cursor_dict(c.find_one({"currency": ticker[0][:-3]}))
+    print(currencies)
+    btc = transform_cursor_dict(c.find_one({"currency": "BTC"}))
     obj = {
         'id': '',
         'symbol': '',
@@ -48,13 +43,13 @@ def map_trade(ticker):
         '7d': 0.00,
         '30d': 0.00
     }
-    if len(signals) > 0 and len(c) > 0:
+    if len(signals) > 0 and len(currencies) > 0:
         od = sorted(signals, key=lambda k: k['time'], reverse=True)
         x = od[0]
         obj['id'] = x['ticker'] + x['interval']
         symbol = x['ticker'].replace('XBT', 'BTC')
         if x['ticker'][-3:] == "BTC":
-            c['price'] = float(c['price']) / float(btc['price'])
+            currencies['price'] = float(currencies['price']) / float(btc['price'])
         obj['symbol'] = symbol
         obj['action'] = x['action']
         obj['timeframe'] = x['interval']
@@ -63,20 +58,17 @@ def map_trade(ticker):
         date_signal = dateutil.parser.parse(x["time"][:19].replace('T', ' '))
         obj['duration'] = str(abs(date_now - date_signal))
         obj['price'] = float(x['price'])
-        obj['current_price'] = float(c['price'])
-        val = ((float(c['price']) - x['price']) / x['price']) * 100.00
+        obj['current_price'] = float(currencies['price'])
+        val = ((float(currencies['price']) - float(x['price'])) / float(x['price'])) * 100.00
         if x['action'] == "buy":
             obj['current_profit'] = float(val)
         else:
             obj['current_profit'] = float(val * -1)
-        obj['1d'] = float(c['1d']["price_change_pct"]) * 100
-        obj['7d'] = float(c['7d']["price_change_pct"]) * 100
-        obj['30d'] = float(c['30d']["price_change_pct"]) * 100
+        obj['1d'] = float(currencies['1d']["price_change_pct"]) * 100
+        obj['7d'] = float(currencies['7d']["price_change_pct"]) * 100
+        obj['30d'] = float(currencies['30d']["price_change_pct"]) * 100
         print(obj)
-        if len(tradesDb.search(q.id == obj['id'])) > 0:
-            tradesDb.update(obj, q.id == obj['id'])
-        else:
-            tradesDb.insert(obj)
+        t.update_one({"id": obj['id']}, {"$set": obj})
     return
 
 
@@ -86,8 +78,7 @@ def map_trade(ticker):
 async def run2():
     async for (symbol, ticker) in run_map_trade(
             [["BTCUSD", 480], ["BTCUSD", 720], ["BTCUSD", 1], ["ETHUSD", 720], ["ETHBTC", 720], ["LINKUSD", 720],
-             ["LINKBTC", 720], ["XRPUSD", 720], ["LTCUSD", 720],
-             ["EOSUSD", 720], ["ADAUSD", 720]]):
+             ["LINKBTC", 720], ["XRPUSD", 720], ["LTCUSD", 720], ["EOSUSD", 720], ["ADAUSD", 720]]):
         print(symbol, ticker)
 
 
