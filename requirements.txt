@@ -12,3 +12,6 @@ python-dateutil
 pandas
 requests
 python-dotenv
+flask_pymongo
+backtesting
+pymongo

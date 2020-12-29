@@ -28,7 +28,7 @@
                     <td class="">{{ trade['duration'] }}</td>
                     <td class="">{{ trade['date'] }}</td>
                     <td class="{{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
-                    <td class="">{{ trade['price'] }}</td>
+                    <td class="">{{ currencies[trade['symbol'][:-3]]['price'] }}</td>
                     <td class="{{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
                     <td class="{{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
                     <td class="{{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
@@ -113,8 +113,8 @@
                         <td class="{{ 'green' if s['action'] == "buy" else 'red' }} uppercase">{{ s['action'] }}</td>
                         <td class="">{{ s['interval'] }}</td>
                         <td class="">{{ s['time'] }}</td>
-                        <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "{:.2%}".format(s['profit']/100) }}</td>
-                        <td class="">{{ "{:.2f}".format(s['price']) }}$</td>
+                        <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "$%.2f"|format(s['profit']/100|float) }}</td>
+                        <td class="">{{ "$%.2f"|format(s['price']|float) }}$</td>
                     </tr>
                 {% endfor %}
                 </tbody>

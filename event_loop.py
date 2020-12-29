@@ -1,12 +1,11 @@
 import asyncio
 import json
 import requests
-from tinydb import TinyDB, Query
-from config import NOMICS_KEY
+from config import NOMICS_KEY, MONGO_URI
+import pymongo
 
-db = TinyDB('db.json')
-currencieDb = db.table('currencie')
-q = Query()
+m = pymongo.MongoClient(MONGO_URI)
+c = m['<dbname>'].currencies
 
 
 # Main method
@@ -18,13 +17,18 @@ async def run1():
         r = requests.get(
             "https://api.nomics.com/v1/currencies/ticker?key=" + NOMICS_KEY + "&interval=1d,7d,30d&per-page=100&page=1")
         if r.status_code == 200:
-            currencieDb.truncate()
-            currencieDb.insert_multiple(json.loads(r.content))
+            data = json.loads(r.content)
+            if c.estimated_document_count() > 0:
+                for d in data:
+                    c.update_one({"id": d['id']}, {"$set": d})
+                print("Updated")
+            else:
+                c.insert_many(data)
             print("Successfully inserted Nomics Currencies")
         else:
             print("Not able to fetch Nomics Currencies : " + str(r.status_code))
         # TODO: Implement alert trigger
-        await asyncio.sleep(10)
+        await asyncio.sleep(60)
 
 
 async def run2():
