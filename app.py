@@ -12,7 +12,7 @@ from flask_pymongo import PyMongo
 # ----------------------------------------------------------------------------#
 # App Config.
 # ----------------------------------------------------------------------------#
-from utils.helper import transform_cursor, transform_cursor_dict
+from utils.helper import transform_cursor, transform_cursor_dict, telegram_bot_sendtext, transform_interval
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -98,9 +98,12 @@ def test_post_signal_v1():
     content = request.get_json()
     print(request.get_json())
     content['ticker'] = content['ticker'].replace('XBT', 'BTC')
-    m.signals.insert(content)
+    m.signals.insert_one(content)
     if '_id' in content: del content['_id']
     print(content)
+    str = '📈  ' if content['action'] == "buy" else '📉  '
+    str += content['ticker'] + ' | ' + transform_interval(content['interval']) + ' | ' + content['price']
+    telegram_bot_sendtext(str)
     return jsonify(content)
 
 
