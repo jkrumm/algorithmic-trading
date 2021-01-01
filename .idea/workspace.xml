@@ -2,19 +2,427 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f97295e3-6a37-49e7-b885-6170fae1f24e" name="Default Changelist" comment="Hotifx">
-      <change afterPath="$PROJECT_DIR$/SmaCross.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fetch-ohlcv-kraken.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/backtest/SmaCross.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/map_tinydb_signals_to_mongodb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ADAETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ADAETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ADAEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ADAEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ADAUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ADAXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ADAXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ALGOEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ALGOEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ALGOUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ALGOUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ALGOXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ALGOXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMETH_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ATOMXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/AUDJPY_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/AUDUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BALETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BALEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BALUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BALUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BALXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BALXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BATXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHAUD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHAUD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHGBP_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHGBP_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHUSDT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHUSDT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/BCHXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/COMPXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/CRVETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/CRVETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/CRVUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/CRVUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/CRVXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DAIEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DAIEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DAIUSDT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DAIUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DAIUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DAIUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DASHEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DASHUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DASHUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DASHXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DASHXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/DOTXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EOSETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EOSETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EOSETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EOSUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EOSUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EOSUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EOSXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETCXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHAUD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHAUD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHCAD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHCHF_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHCHF_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHGBP_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHGBP_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHGBP_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHJPY_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHUSDC_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHUSDC_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHUSDC_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHUSDC_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHUSDT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHUSDT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ETHXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURAUD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURAUD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURCAD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURCAD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURCHF_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURCHF_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURGBP_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURGBP_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURGBP_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURGBP_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURGBP_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURJPY_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURJPY_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURJPY_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/EURUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GBPUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GNOEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GNOEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GNOUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GNOUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GNOUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GNOXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/GNOXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXETH_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ICXXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAETH_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KAVAXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KNCETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KNCEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KNCEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KNCXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KNCXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KNCXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/KSMUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LINKETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LINKEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LINKUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LINKUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LSKETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LSKEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LSKEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LSKEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LSKUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LSKUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LSKXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCAUD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCAUD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCETH_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCGBP_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCGBP_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCUSDT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/LTCXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNETH_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/MLNXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/NANOETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/NANOEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/NANOEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/NANOUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/NANOXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/NANOXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/NANOXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OMGETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OMGEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OMGUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OMGUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OMGXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTETH_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/OXTXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/PAXGXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/QTUMXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPETH_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2EUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2EUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2USD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2USD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2USD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2XBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2XBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPV2XBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/REPXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SCETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SCEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SCUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SCXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SCXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXETH_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/SNXXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJETH_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/STORJXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXEUR_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/TRXXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCAD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCAD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCAD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCHF_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCUSDT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCUSDT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDCUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDJPY_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDJPY_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTAUD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTAUD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTAUD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTCAD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTCAD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTCHF_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTCHF_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTCHF_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTGBP_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTGBP_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTJPY_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTJPY_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/USDTUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESETH_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/WAVESXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTAUD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTAUD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTAUD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTCAD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTCHF_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTCHF_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTCHF_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTCHF_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTCHF_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTGBP_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTJPY_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTJPY_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTUSDC_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTUSDT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTUSDT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTUSDT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XBTUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XDGEUR_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XDGUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XDGXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XDGXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XLMEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XLMEUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XLMUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XLMUSD_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XLMUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XLMXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XLMXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMREUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMREUR_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMRUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMRUSD_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMRUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMRUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMRXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XMRXBT_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPAUD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPCAD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPCAD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPEUR_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPGBP_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPGBP_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPGBP_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPJPY_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPUSDT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPUSDT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPUSDT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPUSD_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPUSD_60.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPXBT_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPXBT_1440.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XRPXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XTZETH_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XTZETH_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XTZEUR_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XTZEUR_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XTZUSD_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XTZXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/XTZXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ZECUSD_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ZECXBT_15.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ZECXBT_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc/ZECXBT_720.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/logo_cut.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/algorithmic-trading.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/algorithmic-trading.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event_loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/event_loop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event_loop_hourly.py" beforeDir="false" afterPath="$PROJECT_DIR$/event_loop_hourly.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layouts/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/placeholder.home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/placeholder.home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helper.py" afterDir="false" />
     </list>
@@ -44,6 +452,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -91,17 +507,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/img" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/img" />
       <recent name="$PROJECT_DIR$/templates/pages" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/img" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/static/css" />
       <recent name="$PROJECT_DIR$/static/js/libs" />
@@ -139,7 +557,10 @@
       <workItem from="1608752823438" duration="1377000" />
       <workItem from="1608804901196" duration="5784000" />
       <workItem from="1609055292158" duration="182000" />
-      <workItem from="1609237987837" duration="3775000" />
+      <workItem from="1609237987837" duration="6061000" />
+      <workItem from="1609410613563" duration="415000" />
+      <workItem from="1609411054706" duration="36000" />
+      <workItem from="1609411153219" duration="5687000" />
     </task>
     <task id="LOCAL-00001" summary="Add tinyDB &amp; postSignal, getSignal endpoint">
       <created>1608284936881</created>
@@ -211,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608468973409</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Many fixes &amp; complete MongoDB integration">
+      <created>1609242235209</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1609242235209</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -269,7 +697,8 @@
     <MESSAGE value="Frontend V1 Hotfix" />
     <MESSAGE value="New Algo for trades and curreny mappings" />
     <MESSAGE value="Hotifx" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hotifx" />
+    <MESSAGE value="Many fixes &amp; complete MongoDB integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Many fixes &amp; complete MongoDB integration" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

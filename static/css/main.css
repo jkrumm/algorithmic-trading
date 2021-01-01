@@ -147,7 +147,13 @@ nav {
 
 nav .navbar-brand {
     text-transform: uppercase;
-    padding-right: 45px;
+    padding: 0 45px 0 0;
+}
+
+nav .navbar-brand img {
+    width: 45px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 nav ul {

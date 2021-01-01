@@ -1,6 +1,6 @@
 Flask
 Fabric
-tinydb
+tinydb<
 Flask-SQLAlchemy
 Flask-WTF
 WTForms

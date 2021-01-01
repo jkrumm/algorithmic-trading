@@ -17,3 +17,5 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 MONGO_URI = "mongodb+srv://application:" + os.getenv(
     "DB_PW") + "@cluster0.adwbt.mongodb.net/<dbname>?retryWrites=true&w=majority"
 NOMICS_KEY = os.getenv("NOMICS_KEY")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")

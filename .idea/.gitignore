@@ -1,0 +1,10 @@
+*.pyc
+.DS_Store
+env
+venv
+db.json
+.idea
+.env
+*.env
+/static/backtest/
+/ohlc/**
