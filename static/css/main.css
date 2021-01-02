@@ -17,7 +17,7 @@ html {
 }
 
 html * {
-    font-family: Bender !important;
+    font-family: Bender;
 }
 
 a {
@@ -48,6 +48,27 @@ h1 {
 /*****************************************************************************
  * Coin List
  ****************************************************************************/
+i.list {
+    min-width: 16px;
+    margin-right: 7px;
+}
+
+div.alert-wrapper {
+    display: flex;
+    flex: 1 1 0px;
+}
+
+div.alert-wrapper > div {
+    display: inline-block;
+    margin: 20px 15px 28px 15px;
+    flex: 1 1 0px;
+}
+
+div.alert-wrapper > div:nth-child(2) {
+    display: inline-block;
+    margin: 20px 30px 28px 30px;
+    flex: 1 1 0px;
+}
 
 div.coin-list-wrapper {
     display: flex;

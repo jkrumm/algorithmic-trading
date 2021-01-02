@@ -10,8 +10,10 @@ ccxt
 tinydb
 python-dateutil
 pandas
+tweepy
 requests
 python-dotenv
 flask_pymongo
+flask_fontawesome
 backtesting
 pymongo

@@ -19,3 +19,7 @@ MONGO_URI = "mongodb+srv://application:" + os.getenv(
 NOMICS_KEY = os.getenv("NOMICS_KEY")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
+consumer_key = os.getenv("consumer_key")
+consumer_secret = os.getenv("consumer_secret")
+access_token = os.getenv("access_token")
+access_token_secret = os.getenv("access_token_secret")

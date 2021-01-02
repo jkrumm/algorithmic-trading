@@ -2,6 +2,38 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 
+    <div class="alert-wrapper">
+        <div class="alert alert-primary">
+            <h4>Telegram and Twitter signals</h4>
+            Instant notification of all signals and daily updates for the current trades.<br>
+            <a href="https://twitter.com/dajohannes" target="_blank"><i class="list fab fa-twitter"></i>Algorithmic
+                Crypto Twitter</a><br>
+            <a href="https://t.me/joinchat/HBOOCbSxkwTC_eVE" target="_blank"><i class="list fab fa-telegram"></i>Algorithmic
+                Crypto Telegram</a>
+        </div>
+        <div class="alert alert-primary">
+            <h4>Donations</h4>
+            All signals will remain free. Please support my work with a donation! Thankful for even the smallest
+            donations.<br>
+            <a href="https://twitter.com/dajohannes" target="_blank"><i class="list fab fa-bitcoin"></i></i>
+                Bitcoin</a><br>
+            <a href="https://twitter.com/dajohannes" target="_blank"><i class="list fab fa-ethereum"></i></i>
+                Ethereum</a><br>
+            <a href="https://paypal.me/johanneskrum" target="_blank"><i class="list fab fa-paypal"></i></i>
+                Paypal</a><br>
+        </div>
+        <div class="alert alert-primary">
+            <h4>Contact, Feedback and Contribution</h4>
+            Please send me a message on the contact page or per mail. Check out and contribute on the Github
+            project.<br>
+            <a href="/contact"><i class="list fas fa-paper-plane"></i>Contact page</a><br>
+            <a href="https://t.me/joinchat/HBOOCbSxkwTC_eVE" target="_blank"><i class="list fas fa-envelope"></i>Send
+                mail</a><br>
+            <a href="https://github.com/jkrumm/algorithmic-trading" target="_blank"><i class="list fab fa-github"></i>Github
+                page</a>
+        </div>
+    </div>
+
     <h1>Current Trades</h1>
     <div class="trades-table-wrapper">
         <table class="table table-hover table-sm table-dark">
@@ -29,6 +61,7 @@
                     <td class="">{{ trade['date'] }}</td>
                     <td class="{{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
                     <td class="">{{ "$%.2f"|format(currencies[trade['symbol'][:-3]]['price']|float) }}</td>
+                    <!-- <td class=""> <td class="">{{ "$%.2f"|format(trade['price']|float) }}</td>-->
                     <td class="{{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
                     <td class="{{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
                     <td class="{{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
@@ -113,7 +146,7 @@
                         <td class="{{ 'green' if s['action'] == "buy" else 'red' }} uppercase">{{ s['action'] }}</td>
                         <td class="">{{ s['interval'] }}</td>
                         <td class="">{{ s['time'] }}</td>
-                        <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "$%.2f"|format(s['profit']/100|float) }}</td>
+                        <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "%.2f"|format(s['profit']|float) }}%</td>
                         <td class="">{{ "$%.2f"|format(s['price']|float) }}$</td>
                     </tr>
                 {% endfor %}

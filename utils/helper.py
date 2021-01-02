@@ -1,5 +1,30 @@
 import requests
-from config import BOT_TOKEN, CHAT_ID
+from config import BOT_TOKEN, CHAT_ID, consumer_key, consumer_secret, access_token, access_token_secret
+import tweepy
+
+
+def twitter_init():
+    callback_uri = 'oob'
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret, callback_uri)
+    auth.set_access_token(access_token, access_token_secret)
+
+    return tweepy.API(auth)
+
+
+def tweet(twitter, msg):
+    print(twitter.me().screen_name)
+    print(msg)
+    return twitter.update_status(msg)
+
+
+def map_currencies_to_dict(c):
+    c = transform_cursor(c)
+    d = {}
+    for x in c:
+        d[x['id']] = x
+    print(d)
+    return d
 
 
 def transform_cursor(obj):

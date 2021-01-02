@@ -27,7 +27,6 @@ async def run_map_trade(tickers):
 def map_trade(ticker):
     signals = transform_cursor(s.find({"ticker": ticker[0], "interval": str(ticker[1])}))
     currencies = transform_cursor_dict(c.find_one({"currency": ticker[0][:-3]}))
-    print(currencies)
     btc = transform_cursor_dict(c.find_one({"currency": "BTC"}))
     obj = {
         'id': '',

@@ -4,7 +4,7 @@
 import os
 
 from flask import Flask, render_template, request, jsonify
-# from tinydb import TinyDB, Query
+from flask_fontawesome import FontAwesome
 import logging
 from logging import Formatter, FileHandler
 from flask_pymongo import PyMongo
@@ -12,22 +12,16 @@ from flask_pymongo import PyMongo
 # ----------------------------------------------------------------------------#
 # App Config.
 # ----------------------------------------------------------------------------#
-from utils.helper import transform_cursor, transform_cursor_dict, telegram_bot_sendtext, transform_interval
+from config import SECRET_KEY
+from utils.helper import transform_cursor, telegram_bot_sendtext, transform_interval, twitter_init, tweet, \
+    map_currencies_to_dict
 
 app = Flask(__name__)
 app.config.from_object('config')
-# app.config["MONGO_URI"] = "mongodb+srv://application:" + str(os.getenv("DW_PW")) + "@cluster0.adwbt.mongodb.net/<dbname>?retryWrites=true&w=majority"
-
+fa = FontAwesome(app)
 m = PyMongo(app).db
+twitter = twitter_init()
 
-
-# db = TinyDB('db.json')
-
-# signalDB = db.table('signal')
-# tradesDB = db.table('trades')
-# symbolsDb = db.table('symbols')
-# currencieDb = db.table('currencie')
-# Ticker = Query()
 
 # from backtesting import Backtest, Strategy
 # from backtesting.lib import crossover
@@ -57,15 +51,6 @@ m = PyMongo(app).db
 # bt.plot(filename="./static/backtest/SmaCross.html")
 
 
-def map_currencies_to_dict(c):
-    c = transform_cursor(c)
-    d = {}
-    for x in c:
-        d[x['id']] = x
-    print(d)
-    return d
-
-
 @app.route('/')
 def home():
     symbol = request.args.get('symbol')
@@ -93,17 +78,37 @@ def about():
     return render_template('pages/placeholder.about.html')
 
 
+@app.route('/contact')
+def contact():
+    return render_template('pages/placeholder.about.html')
+
+
+@app.route('/tweet/<msg>')
+def tweet_endpoint(msg):
+    return tweet(twitter, msg)
+
+
 @app.route('/test/v1/postSignal', methods=['POST'])
 def test_post_signal_v1():
     content = request.get_json()
     print(request.get_json())
+    if content['secret'] != SECRET_KEY:
+        return "Unauthorized"
     content['ticker'] = content['ticker'].replace('XBT', 'BTC')
     m.signals.insert_one(content)
     if '_id' in content: del content['_id']
     print(content)
     str = '📈  ' if content['action'] == "buy" else '📉  '
-    str += content['ticker'] + ' | ' + transform_interval(content['interval']) + ' | ' + content['price']
+    str_twitter = str
+    str += content['ticker'] + ' | ' + transform_interval(content['interval']) + ' | ' + "{:.2f}".format(
+        float(content['price'])) + "$"
+    content['telegram'] = str
     telegram_bot_sendtext(str)
+    str_twitter += '$' + content['ticker'] + ' | ' + transform_interval(content['interval']) + ' | ' + "{:.2f}".format(
+        float(content['price'])) + "$"
+    str_twitter += "\n\n" + "All signals and performance on AlgorithmicCrypto.com"
+    str_twitter += "\n$" + content['ticker'][:-3] + " #trading #bot #signal #automated #cryptocurrency"
+    content['twitter'] = str_twitter
     return jsonify(content)
 
 
