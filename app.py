@@ -88,7 +88,7 @@ def tweet_endpoint(msg):
     return tweet(twitter, msg)
 
 
-@app.route('/test/v1/postSignal', methods=['POST'])
+@app.route('/postSignal', methods=['POST'])
 def test_post_signal_v1():
     content = request.get_json()
     print(request.get_json())
@@ -106,9 +106,10 @@ def test_post_signal_v1():
     telegram_bot_sendtext(str)
     str_twitter += '$' + content['ticker'] + ' | ' + transform_interval(content['interval']) + ' | ' + "{:.2f}".format(
         float(content['price'])) + "$"
-    str_twitter += "\n\n" + "All signals and performance on AlgorithmicCrypto.com"
-    str_twitter += "\n$" + content['ticker'][:-3] + " #trading #bot #signal #automated #cryptocurrency"
+    str_twitter += '\n' + '\n' + "All signals and performance on AlgorithmicCrypto.com"
+    str_twitter += '\n' + "$" + content['ticker'][:-3] + " #trading #bot #signal #automated #cryptocurrency"
     content['twitter'] = str_twitter
+    tweet(twitter, str_twitter)
     return jsonify(content)
 
 
