@@ -100,7 +100,7 @@ def test_post_signal_v1():
     m.signals.insert_one(content)
     if '_id' in content: del content['_id']
     print(content)
-    str = '📈  ' if content['action'] == "buy" else '📉  '
+    str = '🤖📈 BUY | ' if content['action'] == "buy" else '🤖📉 SELL | '
     str_twitter = str
     str += content['ticker'] + ' | ' + transform_interval(content['interval']) + ' | ' + "{:.2f}".format(
         float(content['price'])) + "$"
