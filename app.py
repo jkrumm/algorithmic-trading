@@ -80,7 +80,7 @@ def about():
 
 @app.route('/contact')
 def contact():
-    return render_template('pages/placeholder.about.html')
+    return render_template('pages/contact.html')
 
 
 @app.route('/tweet/<msg>')

@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 
 .container, .container-lg, .container-md, .container-sm, .container-xl, body, html {
-    min-width: 1140px;
+    min-width: 1000px;
 }
 
 .container, .container-lg, .container-md, .container-sm, .container-xl {
@@ -12,6 +12,7 @@
 html,
 body {
     height: 100%;
+    min-width: 1000px;
     /* The html and body elements cannot have any padding or margin. */
 }
 
@@ -26,6 +27,19 @@ body {
     padding: 0 0 60px;
 }
 
+.navbar-fixed-top {
+    min-width: 1000px;
+}
+
+ul.navbar-nav {
+    max-width: 672px;
+}
+
+.navbar-expand-lg .navbar-nav {
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
 /* Set the fixed height of the footer here */
 #footer {
     height: 24px;
@@ -34,6 +48,16 @@ body {
     bottom: 0;
     width: 100vw;
     border-top: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+#footer span {
+    font-style: italic;
+    font-size: small;
+}
+
+#footer a {
+    font-weight: normal;
+    color: rgb(170, 170, 170);
 }
 
 

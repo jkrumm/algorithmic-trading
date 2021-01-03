@@ -43,16 +43,6 @@ h1 {
     text-transform: uppercase;
 }
 
-#footer span {
-    font-style: italic;
-    font-size: small;
-}
-
-#footer a {
-    font-weight: normal;
-    color: rgb(170, 170, 170);
-}
-
 /* Main elements end */
 
 /*****************************************************************************
