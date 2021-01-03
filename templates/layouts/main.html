@@ -94,11 +94,67 @@
 
     </main>
 
+    <!-- Modal -->
+    <div class="modal fade" id="btc_donation" tabindex="-1" role="dialog" aria-labelledby="#btc_donation"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">BTC Donation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card" style="width: 26rem; margin: 0 auto; text-align: center;">
+                        <img class="card-img-top" src="../../static/img/btc_donate.png" alt="BTC address qcr code">
+                        <div class="card-body">
+                            <p class="card-text"><h5>bc1q39aa8rpzlh03s27nl76299va2cgymy9r4rj3y7</h5></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="eth_donation" tabindex="-1" role="dialog" aria-labelledby="#eth_donation"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ETH Donation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card" style="width: 26rem; margin: 0 auto; text-align: center;">
+                        <img class="card-img-top" src="../../static/img/eth_donate.png" alt="BTC address qcr code">
+                        <div class="card-body">
+                            <p class="card-text"><h5>0x7F327Ff2fadd3983cD09226d38E222777A018407</h5></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div id="footer">
     <div class="container">
-        <p>&copy; Johannes Krumm 2021 | Algorithmic Crypto | Donations: BTC / ETH</p>
+        <p>&copy;2021 | Algorithmic Crypto | Donations: <a href="#" data-toggle="modal" data-target="#btc_donation">BTC
+            <span>bc1q39aa8rpzlh03s27nl76299va2cgymy9r4rj3y7</span></a>
+            /
+            <a href="#" data-toggle="modal" data-target="#eth_donation">ETH
+                <span>0x7F327Ff2fadd3983cD09226d38E222777A018407</span></a></p>
     </div>
 </div>
 
