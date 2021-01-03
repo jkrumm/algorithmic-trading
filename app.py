@@ -50,6 +50,8 @@ twitter = twitter_init()
 # stats = bt.run()
 # bt.plot(filename="./static/backtest/SmaCross.html")
 
+# v=spf1 ip4:66.96.128.0/18 ?all
+# google-site-verification=hnZDTIZDro-SF5tDbwG_MyeEL0wCbgKVBG9YRyjxf18
 
 @app.route('/')
 def home():
