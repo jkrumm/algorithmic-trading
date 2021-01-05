@@ -115,6 +115,16 @@ def test_post_signal_v1():
     return jsonify(content)
 
 
+@app.route('/postTelegram', methods=['POST'])
+def postTelegram():
+    content = request.get_json()
+    print(request.get_json())
+    if content['secret'] != SECRET_KEY:
+        return "Unauthorized"
+    telegram_bot_sendtext(content['msg'])
+    return jsonify(content)
+
+
 @app.route('/test/v1/getSignal/<ticker>', methods=['GET'])
 def test_get_signal_v1(ticker):
     if ticker == "all":
