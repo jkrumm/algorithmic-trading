@@ -9,13 +9,13 @@ db = TinyDB('../db.json')
 signalDB = db.table('signal')
 q = Query()
 
-df = pd.read_csv('BTCUSD_8H.csv')
+df = pd.read_csv('BTCUSD_12H.csv')
 ticker = "BTCUSD"
-interval = "480"
+interval = "720"
 # interval = "720"
 # interval = "1"
 
-# signalDB.remove((q.ticker == ticker) & (q.interval == str(interval)))
+signalDB.remove((q.ticker == ticker) & (q.interval == str(interval)))
 
 df = df[df['Trade #'].notnull()].reset_index()[['Signal', 'Date/Time', 'Price']]
 
@@ -56,3 +56,4 @@ if len(duplicates) > 0:
     print(duplicates)
 else:
     print("Successful insert: " + str(index))
+print(signalDB.search((q.ticker == ticker) & (q.interval == interval)))

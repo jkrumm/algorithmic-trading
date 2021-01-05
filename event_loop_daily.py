@@ -38,7 +38,7 @@ def map_profit(ticker):
         if od[0]['action'] == "sell":
             profit = profit * -1
         s.update_one({'_id': od[0]['_id']}, {"$set": {"profit": profit}})
-        for i in range(5):
+        for i in range(7):
             if i > 0:
                 profit = ((float(od[i - 1]['price']) - float(od[i]['price'])) / float(od[i]['price'])) * 100
                 if od[i]['action'] == "buy":

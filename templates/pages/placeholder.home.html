@@ -8,7 +8,7 @@
             Instant notification of all signals and daily updates for the current trades.<br>
             <a href="https://twitter.com/dajohannes" target="_blank"><i class="list fab fa-twitter"></i>Algorithmic
                 Crypto Twitter</a><br>
-            <a href="https://t.me/joinchat/HBOOCbSxkwTC_eVE" target="_blank"><i class="list fab fa-telegram"></i>Algorithmic
+            <a href="https://t.me/algorithmiccrypto" target="_blank"><i class="list fab fa-telegram"></i>Algorithmic
                 Crypto Telegram</a>
         </div>
         <div class="alert alert-primary">
@@ -35,39 +35,47 @@
 
     <h1>Current Trades</h1>
     <div class="trades-table-wrapper">
-        <table class="table table-hover table-sm table-dark">
-            <thead>
-            <tr>
-                <th class="">Pair</th>
-                <th class="">Action</th>
-                <th class="">Timeframe</th>
-                <th class="">Duration</th>
-                <th class="">Date</th>
-                <th class="">Profitability</th>
-                <th class="">Price</th>
-                <th class="">1D</th>
-                <th class="">1W</th>
-                <th class="">1M</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for trade in trades %}
+        <div id="no-more-tables">
+            <table class="table table-hover table-sm table-dark">
+                <thead>
                 <tr>
-                    <td class="">{{ trade['symbol'] }}</td>
-                    <td class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</td>
-                    <td class="">{{ trade['timeframe'] }}</td>
-                    <td class="">{{ trade['duration'] }}</td>
-                    <td class="">{{ trade['date'] }}</td>
-                    <td class="{{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
-                    <td class="">{{ "$%.2f"|format(currencies[trade['symbol'][:-3]]['price']|float) }}</td>
-                    <!-- <td class=""> <td class="">{{ "$%.2f"|format(trade['price']|float) }}</td>-->
-                    <td class="{{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
-                    <td class="{{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
-                    <td class="{{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
+                    <th class="">Pair</th>
+                    <th class="">Action</th>
+                    <th class="numeric">Timeframe</th>
+                    <th class="">Duration</th>
+                    <th class="">Date</th>
+                    <th class="numeric">Profitability</th>
+                    <th class="numeric">Price</th>
+                    <th class="numeric">1D</th>
+                    <th class="numeric">1W</th>
+                    <th class="numeric">1M</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for trade in trades %}
+                    <tr>
+                        <td data-title="Pair" class="">{{ trade['symbol'] }}</td>
+                        <td data-title="Action"
+                            class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</td>
+                        <td data-title="Timeframe" class="">{{ trade['timeframe'] }}</td>
+                        <td data-title="Duration" class="">{{ trade['duration'] }}</td>
+                        <td data-title="Date" class="">{{ trade['date'] }}</td>
+                        <td data-title="Profitability"
+                            class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
+                        <td data-title="Price"
+                            class="numeric">{{ "$%.2f"|format(currencies[trade['symbol'][:-3]]['price']|float) }}</td>
+                        <!-- <td class=""> <td class="">{{ "$%.2f"|format(trade['price']|float) }}</td>-->
+                        <td data-title="1D"
+                            class="numeric {{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
+                        <td data-title="1W"
+                            class="numeric {{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
+                        <td data-title="1M"
+                            class="numeric {{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <hr>
