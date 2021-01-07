@@ -2,6 +2,12 @@
 {% block title %}Bitcoin, Ethereum free profitable algorithmic signals{% endblock %}
 {% block content %}
 
+    <div class="alert alert-dismissible alert-warning" id="warning-message">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading">Warning!</h4>
+        <p class="mb-0">This website looks much better in landscape mode. Please flip your phone to te site</p>
+    </div>
+
     <div class="alert-wrapper">
         <div class="alert alert-primary">
             <h4>Telegram and Twitter signals</h4>
@@ -81,9 +87,57 @@
     <hr>
 
     <h1>Signal History</h1>
+    <div class="form-signal">
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <h5>Filter Signals</h5>
+                    <div class="form-check form-check-inline" id="buy_sell">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio11"
+                               value="buy_sell" {{ "checked" if request.args.get('action') == "buy_sell" or request.args.get('action') == None }}>
+                        <label class="form-check-label" for="inlineRadio11">Longs and Shorts</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="buy">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio12"
+                               value="buy" {{ "checked" if request.args.get('action') == "buy" }}>
+                        <label class="form-check-label" for="inlineRadio12">Only longs</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="sell">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio13"
+                               value="sell" {{ "checked" if request.args.get('action') == "sell" }}>
+                        <label class="form-check-label" for="inlineRadio13">Only shorts</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <h5>Timespan</h5>
+                    <div class="form-check form-check-inline" id="time_0">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                               value="0" {{ "checked" if request.args.get('timespan') == "0" or request.args.get('timespan') == None }}>
+                        <label class="form-check-label" for="inlineRadio1">All</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="time_1">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                               value="365" {{ "checked" if request.args.get('timespan') == "365" }}>
+                        <label class="form-check-label" for="inlineRadio2">1 Year</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="time_2">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                               value="730" {{ "checked" if request.args.get('timespan') == "730" }}>
+                        <label class="form-check-label" for="inlineRadio3">2 Years</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="time_5">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                               value="1825" {{ "checked" if request.args.get('timespan') == "1825" }}>
+                        <label class="form-check-label" for="inlineRadio4">5 Years</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
     <div class="coin-list-wrapper">
         <div id="BTCUSD_8H"
-             class="{{ "active" if request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "480" }}">
+             class="{{ "active" if (request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "480") }}">
             <h3>BTCUSD</h3>
             <span>8H</span>
         </div>
@@ -98,7 +152,7 @@
             <span>1D</span>
         </div>
         <div id="ETHUSD_12H"
-             class="{{ "active" if request.args.get('symbol') == "ETHUSD" and request.args.get('interval') == "720" }}">
+             class="{{ "active" if request.args.get('symbol') == "ETHUSD" and request.args.get('interval') == "720" or request.args.get('symbol') == None }}">
             <h3>ETHUSD</h3>
             <span>12H</span>
         </div>
@@ -134,88 +188,93 @@
         </div>
     </div>
     <div class="signal-wrapper">
-        <div class="signals-table-wrapper">
-            <table class="table table-hover table-sm table-dark">
-                <thead>
-                <tr>
-                    <th class="">Pair</th>
-                    <th class="">Action</th>
-                    <th class="">Timeframe</th>
-                    <th class="">Date</th>
-                    <th class="">Profitability</th>
-                    <th class="">Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for s in signal|reverse %}
-                    <tr>
-                        <td class="">{{ s['ticker'] }}</td>
-                        <td class="{{ 'green' if s['action'] == "buy" else 'red' }} uppercase">{{ s['action'] }}</td>
-                        <td class="">{{ s['interval'] }}</td>
-                        <td class="">{{ s['time'] }}</td>
-                        <td class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "%.2f"|format(s['profit']|float) }}%</td>
-                        <td class="">{{ "$%.2f"|format(s['price']|float) }}$</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
         <div class="signal-summary-wrapper">
             <div class="grid">
                 <div class="cell">
-                    <span>Net Profit</span>
+                    <h5>Net Profit</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.net_profit) }}%</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Gross Profit</span>
+                    <h5>Gross Profit</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.gross_profit) }}%</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Gross Lost</span>
+                    <h5>Gross Lost</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.gross_lost) }}%</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Buy & Hold Return</span>
+                    <h5>Daily Return</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.daily_return) }}</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Total Trades</span>
+                    <h5>Total Trades</h5>
                     <div>
-                        <span></span>
+                        <span>{{ performance.total_trades }}</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Win Rate</span>
+                    <h5>Win Rate</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.win_rate) }}%</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Ratio Win/Loss</span>
+                    <h5>Ratio Win/Loss</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.win_loss_ratio) }}</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Largest Win</span>
+                    <h5>Largest Win</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.largest_win) }}$</span>
                     </div>
                 </div>
                 <div class="cell">
-                    <span>Largest Loss</span>
+                    <h5>Largest Loss</h5>
                     <div>
-                        <span></span>
+                        <span>{{ "%.2f"|format(performance.largest_lost) }}$</span>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="signals-table-wrapper">
+            <div id="no-more-tables">
+                <table class="table table-hover table-sm table-dark">
+                    <thead>
+                    <tr>
+                        <th class="">Pair</th>
+                        <th class="">Action</th>
+                        <th class="">Timeframe</th>
+                        <th class="">Date</th>
+                        <th class="">Profitability</th>
+                        <th class="">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for s in signal|reverse %}
+                        <tr>
+                            <td data-title="Pair" class="">{{ s['ticker'] }}</td>
+                            <td data-title="Action"
+                                class="{{ 'green' if s['action'] == "buy" else 'red' }} uppercase">{{ s['action'] }}</td>
+                            <td data-title="Timeframe" class="">{{ s['interval'] }}</td>
+                            <td data-title="Date" class="">{{ s['time'] }}</td>
+                            <td data-title="Profitability"
+                                class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "%.2f"|format(s['profit']|float) }}%
+                            </td>
+                            <td data-title="Price" class="">{{ "$%.2f"|format(s['price']|float) }}$</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

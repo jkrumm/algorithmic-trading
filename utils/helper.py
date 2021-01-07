@@ -23,7 +23,7 @@ def map_currencies_to_dict(c):
     d = {}
     for x in c:
         d[x['id']] = x
-    print(d)
+    # print(d)
     return d
 
 

@@ -2,7 +2,9 @@
 # Imports
 # ----------------------------------------------------------------------------#
 import os
+from datetime import datetime
 
+import dateutil.parser as parser
 from flask import Flask, render_template, request, jsonify
 from flask_fontawesome import FontAwesome
 import logging
@@ -14,7 +16,7 @@ from flask_pymongo import PyMongo
 # ----------------------------------------------------------------------------#
 from config import SECRET_KEY
 from utils.helper import transform_cursor, telegram_bot_sendtext, transform_interval, twitter_init, tweet, \
-    map_currencies_to_dict
+    map_currencies_to_dict, transform_cursor_dict
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -57,15 +59,43 @@ twitter = twitter_init()
 def home():
     symbol = request.args.get('symbol')
     interval = request.args.get('interval')
+    action = request.args.get('action')
+    timespan = request.args.get('timespan')
+    signal = []
+
     if symbol is None:
-        symbol = "BTCUSD"
+        symbol = "ETHUSD"
     if interval is None:
         interval = "720"
-    print(symbol, interval)
+    if action is None:
+        action = "buy_sell"
+    if timespan is None:
+        timespan = "0"
+
+    if action == "buy_sell":
+        signal = m.signals.find({"ticker": symbol, "interval": interval})
+    else:
+        signal = m.signals.find({"ticker": symbol, "interval": interval, "action": action})
+
+    signal = transform_cursor(signal)
+
+    if timespan != "0":
+        date_now = parser.parse(datetime.now().isoformat()[:19].replace('T', ' '))
+        new_signal = []
+        for x in signal:
+            if abs(date_now - parser.parse(x["time"][:19].replace('T', ' '))).days < int(timespan):
+                new_signal.append(x)
+        signal = new_signal
+
+    print(transform_cursor_dict(
+        m.performance.find_one({"index": symbol + "-" + interval + "-" + action + "-" + timespan})))
+
     return render_template('pages/placeholder.home.html',
                            args=request.args,
                            trades=m.trades.find(),
-                           signal=m.signals.find({"ticker": symbol, "interval": interval}),
+                           signal=signal,
+                           performance=transform_cursor_dict(m.performance.find_one(
+                               {"index": symbol + "-" + interval + "-" + action + "-" + timespan})),
                            currencies=map_currencies_to_dict(m.currencies.find()))
 
 

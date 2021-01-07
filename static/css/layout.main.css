@@ -11,7 +11,9 @@
 
 html,
 body {
-    height: 100%;
+	height: 100%;
+	max-width: 100vw;
+	overflow-x: hidden;
 	/* min-width: 1000px; */
 	/* The html and body elements cannot have any padding or margin. */
 }
@@ -102,13 +104,14 @@ code {
 	}
 
 	#no-more-tables tr {
-		border: 1px solid #ccc;
+		border: 1px solid rgba(0, 0, 0, .6);
+		margin-bottom: 10px;
 	}
 
 	#no-more-tables td {
 		/* Behave  like a "row" */
 		border: none;
-		border-bottom: 1px solid #eee;
+		border-bottom: 1px solid rgba(0, 0, 0, .6);
 		position: relative;
 		padding-left: 50%;
 		white-space: normal;

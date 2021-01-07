@@ -44,6 +44,24 @@ h1 {
     text-transform: uppercase;
 }
 
+#warning-message {
+    display: none;
+    width: calc(100% - 30px);
+    margin: 20px 15px 28px 15px;
+}
+
+@media only screen and (orientation: portrait) and (max-width: 670px) {
+    #warning-message {
+        display: block;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    #warning-message {
+        display: none;
+    }
+}
+
 /* Main elements end */
 
 /*****************************************************************************
@@ -55,25 +73,34 @@ i.list {
 }
 
 div.alert-wrapper {
-    display: flex;
-    flex: 1 1 0px;
+    display: block;
 }
 
 div.alert-wrapper > div {
+    width: calc(100% - 30px);
     display: inline-block;
     margin: 20px 15px 28px 15px;
     flex: 1 1 0px;
 }
 
-div.alert-wrapper > div:nth-child(2) {
-    display: inline-block;
-    margin: 20px 30px 28px 30px;
-    flex: 1 1 0px;
+@media only screen and (min-width: 670px) {
+    div.alert-wrapper {
+        width: auto;
+        display: flex;
+        flex: 1 1 0px;
+    }
+
+    div.alert-wrapper > div:nth-child(2) {
+        display: inline-block;
+        margin: 20px 30px 28px 30px;
+        flex: 1 1 0px;
+    }
 }
 
 div.coin-list-wrapper {
     display: flex;
     flex: 1 1 0px;
+    flex-wrap: wrap;
 }
 
 div.coin-list-wrapper > div {
@@ -109,15 +136,47 @@ div.coin-list-wrapper .active {
  * Signal Table
  ****************************************************************************/
 .signal-wrapper {
-    display: flex;
+    display: block;
     border: 1px solid rgba(0, 0, 0, 0.6);
     border-top: 0;
 }
 
 .signals-table-wrapper {
-    width: 65%;
+    width: 100%;
     overflow-y: auto;
     height: 500px;
+}
+
+.signal-summary-wrapper {
+    width: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.signal-summary-wrapper h5 {
+    margin: 0 0 5px 0;
+}
+
+@media only screen and (min-width: 670px) {
+    .signal-wrapper {
+        display: flex;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        border-top: 0;
+    }
+
+    .signals-table-wrapper {
+        width: 65%;
+        overflow-y: auto;
+        height: 500px;
+    }
+
+    .signal-summary-wrapper {
+        width: 35%;
+        border-right: 1px solid rgba(0, 0, 0, 0.6);
+    }
+
+    .signal-summary-wrapper h5 {
+        margin: 57px 0 5px 0;
+    }
 }
 
 .signals-table-wrapper thead th {
@@ -125,10 +184,6 @@ div.coin-list-wrapper .active {
     top: 0;
     background: rgb(39, 43, 48);
     border-bottom: 2px solid rgba(0, 0, 0, 0.6);
-}
-
-.signal-summary-wrapper {
-    width: 35%;
 }
 
 .signal-summary-wrapper .grid {
@@ -145,6 +200,10 @@ div.coin-list-wrapper .active {
     background-color: rgb(39, 43, 48);
 }
 
+.signal-summary-wrapper .cell {
+    text-align: center;
+}
+
 /* Signal Table end */
 
 
@@ -153,12 +212,14 @@ div.coin-list-wrapper .active {
  ****************************************************************************/
 
 /* Various other styles end */
-td.green {
-    color: green;
-}
+@media only screen and (min-width: 670px) {
+    td.green {
+        color: green;
+    }
 
-td.red {
-    color: red;
+    td.red {
+        color: red;
+    }
 }
 
 nav {
@@ -169,7 +230,7 @@ nav {
 
 nav .navbar-brand {
     text-transform: uppercase;
-    padding: 0 45px 0 0;
+    padding: 5px 0;
 }
 
 nav .navbar-brand img {
@@ -178,19 +239,26 @@ nav .navbar-brand img {
     margin-left: 20px;
 }
 
-nav ul {
-    display: flex;
-}
+@media only screen and (min-width: 992px) {
+    nav .navbar-brand {
+        text-transform: uppercase;
+        padding: 0 45px 0 0;
+    }
 
-nav ul li {
-    flex: 1 1 0px;
-}
+    nav ul {
+        display: flex;
+    }
 
-nav a.nav-link {
-    text-transform: uppercase;
-    min-width: 135px;
-    display: inline-block;
-    text-align: center;
+    nav ul li {
+        flex: 1 1 0px;
+    }
+
+    nav a.nav-link {
+        text-transform: uppercase;
+        min-width: 135px;
+        display: inline-block;
+        text-align: center;
+    }
 }
 
 .uppercase {
