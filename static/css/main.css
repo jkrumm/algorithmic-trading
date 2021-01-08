@@ -47,7 +47,7 @@ h1 {
 #warning-message {
     display: none;
     width: calc(100% - 30px);
-    margin: 20px 15px 28px 15px;
+    margin: 10px 15px 18px 15px;
 }
 
 @media only screen and (orientation: portrait) and (max-width: 670px) {
@@ -60,6 +60,24 @@ h1 {
     #warning-message {
         display: none;
     }
+}
+
+.alert .flex {
+    display: flex;
+}
+
+.alert .flex > div:first-of-type {
+    max-width: 70px;
+}
+
+.alert .flex > div:first-of-type img {
+    max-width: 60px;
+    margin: 0 15px 0 -10px;
+    filter: brightness(0) invert(1);
+}
+
+.alert-dismissible {
+    padding-right: 15px;
 }
 
 /* Main elements end */
@@ -79,7 +97,7 @@ div.alert-wrapper {
 div.alert-wrapper > div {
     width: calc(100% - 30px);
     display: inline-block;
-    margin: 20px 15px 28px 15px;
+    margin: 10px 10px 15px 10px;
     flex: 1 1 0px;
 }
 
@@ -92,7 +110,7 @@ div.alert-wrapper > div {
 
     div.alert-wrapper > div:nth-child(2) {
         display: inline-block;
-        margin: 20px 30px 28px 30px;
+        margin: 10px 30px 15px 30px;
         flex: 1 1 0px;
     }
 }
