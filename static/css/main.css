@@ -21,6 +21,22 @@ html * {
     font-family: Bender;
 }
 
+body {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+@media only screen and (min-width: 670px) {
+    html * {
+        /* font-size: 115%; */
+    }
+
+    body {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+}
+
 a {
     cursor: pointer;
 }
@@ -50,7 +66,7 @@ h1 {
     margin: 10px 15px 18px 15px;
 }
 
-@media only screen and (orientation: portrait) and (max-width: 670px) {
+@media only screen and (orientation: portrait) and (max-width: 767px) {
     #warning-message {
         display: block;
     }
@@ -80,6 +96,16 @@ h1 {
     padding-right: 15px;
 }
 
+.alert.intro {
+    font-size: 15px;
+}
+
+@media only screen and (min-width: 670px) {
+    .alert.intro {
+        font-size: 17px;
+    }
+}
+
 /* Main elements end */
 
 /*****************************************************************************
@@ -90,30 +116,14 @@ i.list {
     margin-right: 7px;
 }
 
-div.alert-wrapper {
-    display: block;
+div.alert {
+    height: calc(100% - 15px);
 }
 
+/*
 div.alert-wrapper > div {
-    width: calc(100% - 30px);
-    display: inline-block;
-    margin: 10px 10px 15px 10px;
     flex: 1 1 0px;
-}
-
-@media only screen and (min-width: 670px) {
-    div.alert-wrapper {
-        width: auto;
-        display: flex;
-        flex: 1 1 0px;
-    }
-
-    div.alert-wrapper > div:nth-child(2) {
-        display: inline-block;
-        margin: 10px 30px 15px 30px;
-        flex: 1 1 0px;
-    }
-}
+} */
 
 div.coin-list-wrapper {
     display: flex;
@@ -162,7 +172,7 @@ div.coin-list-wrapper .active {
 .signals-table-wrapper {
     width: 100%;
     overflow-y: auto;
-    height: 500px;
+    height: 380px;
 }
 
 .signal-summary-wrapper {

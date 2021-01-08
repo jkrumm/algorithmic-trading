@@ -26,7 +26,7 @@
 }
 
 .container, .container-lg, .container-md, .container-sm, .container-xl {
-	max-width: 1600px;
+	max-width: 1250px;
 }
 
 html,
@@ -89,7 +89,7 @@ ul.navbar-nav {
 /* Not required for template or sticky footer method. */
 
 #wrap > .container {
-    padding: 15px 0;
+	padding: 15px 5px;
 }
 
 .container .credit {

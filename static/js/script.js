@@ -17,8 +17,8 @@
     console.log(getUrlParameter('symbol'))
 
     // var symbol = "BTCUSD"
-    var symbol = getUrlParameter('symbol') === undefined ? "BTCUSD" : getUrlParameter('symbol')
-    var interval = getUrlParameter('interval') === undefined ? 480 : getUrlParameter('interval')
+    var symbol = getUrlParameter('symbol') === undefined ? "ETHUSD" : getUrlParameter('symbol')
+    var interval = getUrlParameter('interval') === undefined ? 720 : getUrlParameter('interval')
     var action = getUrlParameter('action') === undefined ? "buy_sell" : getUrlParameter('action')
     var timespan = getUrlParameter('timespan') === undefined ? 0 : getUrlParameter('timespan')
 
