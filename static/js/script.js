@@ -23,7 +23,7 @@
     var timespan = getUrlParameter('timespan') === undefined ? 0 : getUrlParameter('timespan')
 
     const changePath = () => {
-        window.location.replace("/?symbol=" + symbol + "&interval=" + interval + "&action=" + action + "&timespan=" + timespan);
+        window.location.replace("/?symbol=" + symbol + "&interval=" + interval + "&action=" + action + "&timespan=" + timespan + "#signal_history");
     }
 
     $("#buy_sell").click(function () {
