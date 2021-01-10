@@ -99,7 +99,8 @@ def home():
                            performance=transform_cursor_dict(m.performance.find_one(
                                {"index": symbol + "-" + interval + "-" + action + "-" + timespan})),
                            performance_sum=transform_cursor_dict(m.performance.find_one({"index": "summary"})),
-                           currencies=map_currencies_to_dict(m.currencies.find()))
+                           currencies=map_currencies_to_dict(m.currencies.find()),
+                           transform_interval=transform_interval)
 
 
 @app.route('/marketcap')

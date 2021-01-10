@@ -96,15 +96,6 @@ h1 {
     padding-right: 15px;
 }
 
-.alert.intro {
-    font-size: 15px;
-}
-
-@media only screen and (min-width: 670px) {
-    .alert.intro {
-        font-size: 17px;
-    }
-}
 
 /* Main elements end */
 
@@ -118,6 +109,74 @@ i.list {
 
 div.alert {
     height: calc(100% - 15px);
+}
+
+#intro .card {
+    display: inline-flex !important;
+    padding: 0;
+    height: 100%;
+}
+
+#intro .trades_intro .card-body {
+    padding: 0;
+}
+
+.card-body {
+    padding: 10px 15px;
+}
+
+.card-header {
+    padding: 10px 15px;
+}
+
+.card h4,
+.card h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+}
+
+.card h2 {
+    margin: -3px 0;
+    font-size: 25px;
+}
+
+.card-body.intro {
+    font-size: 15px;
+}
+
+.card-body a {
+    text-decoration: underline;
+    width: 100%;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.card-body a:last-of-type {
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 670px) {
+    .card-body.intro {
+        font-size: 17px;
+    }
+}
+
+#accordionHome {
+    padding: 0 15px 20px 15px;
+}
+
+#accordionHome .card-header {
+    padding: 0;
+}
+
+#accordionHome .card-header h4 {
+    padding: 0;
+    margin: 0;
+}
+
+#accordionHome .collapse {
+    background: #3a3f44;
 }
 
 /*
@@ -173,6 +232,7 @@ div.coin-list-wrapper .active {
     width: 100%;
     overflow-y: auto;
     height: 380px;
+    display: none;
 }
 
 .signal-summary-wrapper {
@@ -184,6 +244,16 @@ div.coin-list-wrapper .active {
     margin: 0 0 5px 0;
 }
 
+.signal-summary-wrapper h4 {
+    margin: 2px 4px;
+    padding: 0;
+}
+
+.signal-summary-wrapper span {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
 @media only screen and (min-width: 670px) {
     .signal-wrapper {
         display: flex;
@@ -192,14 +262,16 @@ div.coin-list-wrapper .active {
     }
 
     .signals-table-wrapper {
-        width: 65%;
+        min-width: 65%;
         overflow-y: auto;
-        height: 500px;
+        height: 573px;
+        display: inline;
     }
 
     .signal-summary-wrapper {
         width: 35%;
         border-right: 1px solid rgba(0, 0, 0, 0.6);
+        max-width: 300px;
     }
 
     .signal-summary-wrapper h5 {
@@ -211,6 +283,8 @@ div.coin-list-wrapper .active {
     position: sticky;
     top: 0;
     background: rgb(39, 43, 48);
+    padding-top: calc(.3rem + 1px);
+    border-top: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.6);
 }
 
@@ -293,21 +367,25 @@ nav .navbar-brand img {
     text-transform: uppercase;
 }
 
+.performance_home a {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.performance_home tr:first-of-type td {
+    border-top: none;
+}
+
 /* trades small */
 
 .trade-sm {
+    display: block;
     border-bottom: 1px solid rgba(0, 0, 0, .6);
-    padding: 4px 6px;
-    margin-left: -6px;
-    width: calc(100% + 12px);
+    padding: 5px 15px;
 }
 
 .trade-sm:hover {
     background-color: rgba(255, 255, 255, .075);
-}
-
-.trade-sm:first-of-type {
-    /* margin-top: 1px; */
 }
 
 .trade-sm:last-of-type {
@@ -322,7 +400,6 @@ nav .navbar-brand img {
 
 .trade-sm .title {
     font-size: 16px;
-    font-style: italic;
 }
 
 .trade-sm span.green {
@@ -331,4 +408,46 @@ nav .navbar-brand img {
 
 .trade-sm span.red {
     color: red;
+}
+
+@media (max-width: 992px) {
+    .trade-sm:nth-of-type(3) {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .trade-sm:nth-of-type(4),
+    .trade-sm:nth-of-type(5) {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .trade-sm.less:nth-of-type(4) {
+        display: block;
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .trade-sm.less:nth-of-type(5) {
+        display: none;
+        margin-bottom: 1px;
+    }
+}
+
+@media (min-width: 1150px) {
+    .trade-sm.less:nth-of-type(3) {
+        border-bottom: none;
+    }
+
+    .trade-sm.less:nth-of-type(4),
+    .trade-sm.less:nth-of-type(5) {
+        display: none;
+    }
+}
+
+.form-signal label {
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
 }
