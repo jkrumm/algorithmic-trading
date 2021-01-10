@@ -1,5 +1,7 @@
 import asyncio
 import json
+import time
+
 import requests
 from config import NOMICS_KEY, MONGO_URI
 import pymongo
@@ -27,7 +29,6 @@ async def run1():
             print("Successfully inserted Nomics Currencies")
         else:
             print("Not able to fetch Nomics Currencies : " + str(r.status_code))
-        # TODO: Implement alert trigger
         await asyncio.sleep(60)
 
 
@@ -43,3 +44,4 @@ loop = asyncio.get_event_loop()
 loop.create_task(run1())
 # loop.create_task(run2())
 loop.run_forever()
+time.sleep(5)

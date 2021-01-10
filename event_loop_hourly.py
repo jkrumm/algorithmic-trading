@@ -1,8 +1,12 @@
-from datetime import datetime, timedelta
+import time
+
+start_time = time.time()
+from datetime import datetime
 import asyncio
 import dateutil.parser as parser
 import pymongo
 import pandas as pd
+import json
 
 from config import MONGO_URI
 from utils.helper import transform_cursor, transform_cursor_dict
@@ -10,6 +14,8 @@ from utils.helper import transform_cursor, transform_cursor_dict
 m = pymongo.MongoClient(MONGO_URI)
 s = m['<dbname>'].signals
 t = m['<dbname>'].trades
+tl = m['<dbname>'].trades_latest
+tb = m['<dbname>'].trades_best
 c = m['<dbname>'].currencies
 p = m['<dbname>'].performance
 
@@ -27,7 +33,7 @@ async def run_map_trade(tickers):
         symbol = tickers[i % len(tickers)]
         yield symbol, map_trade(symbol)
         i += 1
-        await asyncio.sleep(1)
+        await asyncio.sleep(0)
 
 
 def map_trade(ticker):
@@ -83,7 +89,7 @@ async def run_map_performance(tickers, results=results):
         symbol = tickers[i % len(tickers)]
         yield symbol, map_performance(symbol)
         i += 1
-        await asyncio.sleep(1)
+        await asyncio.sleep(0)
 
 
 def map_performance(ticker, results=results):
@@ -180,6 +186,16 @@ async def run2():
             [["BTCUSD", 480], ["BTCUSD", 720], ["BTCUSD", 1], ["ETHUSD", 720], ["ETHBTC", 720], ["LINKUSD", 720],
              ["LINKBTC", 720], ["XRPUSD", 720], ["LTCUSD", 720], ["ADAUSD", 720]]):
         print(symbol, ticker)
+    trades_latest = pd.DataFrame.from_dict(transform_cursor(t.find({}))).sort_values(by="date",
+                                                                                     ascending=False).iloc[:3]
+    # print(trades_latest)
+    tl.delete_many({})
+    tl.insert_many(json.loads(trades_latest.T.to_json()).values())
+    trades_best = pd.DataFrame.from_dict(transform_cursor(t.find({}))).sort_values(by="current_profit",
+                                                                                   ascending=False).iloc[:3]
+    # print(trades_best)
+    tb.delete_many({})
+    tb.insert_many(json.loads(trades_best.T.to_json()).values())
 
 
 async def run1(results=results):
@@ -187,16 +203,33 @@ async def run1(results=results):
             [["BTCUSD", 480], ["BTCUSD", 720], ["BTCUSD", 1], ["ETHUSD", 720], ["ETHBTC", 720], ["LINKUSD", 720],
              ["LINKBTC", 720], ["XRPUSD", 720], ["LTCUSD", 720], ["ADAUSD", 720]]):
         print(symbol, ticker)
-    p.delete_many({})
-    p.insert_many(results)
     res = pd.DataFrame.from_dict(results)
-    results_importent = res[
-        ['index', 'duration_days', 'total_trades', 'buy_hold', 'net_profit', 'daily_return', 'win_rate',
-         'win_loss_ratio']].copy()
-    results_importent = results_importent.sort_values(by=['net_profit'], ascending=False)
-    with pd.option_context('display.max_rows', None, 'display.max_columns',
-                           None):  # more options can be specified also
-        print(results_importent)
+    results_sum = res[
+        ["duration_days", "net_profit", "gross_profit", "daily_return", "monthly_return", "yearly_return",
+         "buy_hold", "win_rate", "win_loss_ratio", "largest_win"]].copy().max().to_frame().T
+    results_sum["first_signal"] = res[["first_signal"]].copy().min().to_frame().T
+    results_sum["largest_lost"] = res[["largest_lost"]].copy().min().to_frame().T
+    results_sum["gross_lost"] = res[["gross_lost"]].copy().min().to_frame().T
+    results_sum["total_trades"] = res["total_trades"].sum()
+    results_sum["won_trades"] = res["won_trades"].sum()
+    results_sum["lost_trades"] = res["lost_trades"].sum()
+    results_sum["index"] = "summary"
+    results_sum = results_sum[
+        ['index', 'first_signal', 'duration_days', 'net_profit', 'gross_profit', 'gross_lost',
+         'daily_return', 'monthly_return', 'yearly_return', 'buy_hold', 'total_trades', 'won_trades', 'lost_trades',
+         'win_rate', 'win_loss_ratio', 'largest_win', 'largest_lost']]
+    res = res.append(results_sum).sort_values(by="index", ascending=True).reset_index()
+
+    p.delete_many({})
+    p.insert_many(json.loads(res.T.to_json()).values())
+
+    # results_importent = res[
+    #    ['index', 'duration_days', 'total_trades', 'buy_hold', 'net_profit', 'daily_return', 'win_rate',
+    #     'win_loss_ratio']].copy()
+    # results_importent = results_importent.sort_values(by=['net_profit'], ascending=False)
+    # with pd.option_context('display.max_rows', None, 'display.max_columns',
+    #                       None):  # more options can be specified also
+    #    print(results_importent)
 
 
 # Run async event loop
@@ -207,7 +240,7 @@ def main():
     loop.create_task(run2())
     loop.create_task(run1())
     loop.run_until_complete(asyncio.wait([run2(), run1()]))
-    # loop.run_until_complete(asyncio.wait([run1()]))
 
 
 main()
+print("--- %s seconds ---" % (time.time() - start_time))
