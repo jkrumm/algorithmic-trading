@@ -93,9 +93,12 @@ def home():
     return render_template('pages/placeholder.home.html',
                            args=request.args,
                            trades=m.trades.find(),
+                           tl=m.trades_latest.find(),
+                           tb=m.trades_best.find(),
                            signal=signal,
                            performance=transform_cursor_dict(m.performance.find_one(
                                {"index": symbol + "-" + interval + "-" + action + "-" + timespan})),
+                           performance_sum=transform_cursor_dict(m.performance.find_one({"index": "summary"})),
                            currencies=map_currencies_to_dict(m.currencies.find()))
 
 

@@ -292,3 +292,43 @@ nav .navbar-brand img {
 .uppercase {
     text-transform: uppercase;
 }
+
+/* trades small */
+
+.trade-sm {
+    border-bottom: 1px solid rgba(0, 0, 0, .6);
+    padding: 4px 6px;
+    margin-left: -6px;
+    width: calc(100% + 12px);
+}
+
+.trade-sm:hover {
+    background-color: rgba(255, 255, 255, .075);
+}
+
+.trade-sm:first-of-type {
+    /* margin-top: 1px; */
+}
+
+.trade-sm:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.trade-sm > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trade-sm .title {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.trade-sm span.green {
+    color: green;
+}
+
+.trade-sm span.red {
+    color: red;
+}

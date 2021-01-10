@@ -16,89 +16,149 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-7">
-                <div class="col-12 alert alert-primary intro">
-                    <h2>Welcome to AlgorithmicCrypto.com</h2>
-                    Free highly profitable algorithmic trading signals optimized for the cryptocurrency market.
-                    Combining <i>stochastic momentum oscillators</i> with <i>volatility</i> as well as
-                    <i>RSI divergence</i> to signal breakouts and trend reversals.<br>
-                    Due to our success using this algorithm we want to share the signals with you. If there are more
-                    people following specific strategies they are getting even stronger.<br>
-                    In the future we want to enable automated trading for everybody until now join on Telegram or
-                    Twitter for signals.
+            <div class="col-sm-12 col-lg-3">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-12">
+                        <div class="col-12 alert alert-primary">
+                            <h4>Latest Trades</h4>
+                            {% for trade in tl %}
+                                <div class="trade-sm">
+                                    <div>
+                                        <div class="title">
+                                            <span>{{ trade['symbol'] }}</span>
+                                            <span>{{ trade['timeframe'] }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <span>{{ trade['duration'] }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-12">
+                        <div class="col-12 alert alert-primary">
+                            <h4>Most Profitable Trades</h4>
+                            {% for trade in tb %}
+                                <div class="trade-sm">
+                                    <div>
+                                        <div class="title">
+                                            <span>{{ trade['symbol'] }}</span>
+                                            <span>{{ trade['timeframe'] }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <span>{{ trade['duration'] }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <div class="col-12 alert alert-primary">
-                    <h4>Performance</h4>
-                    <a href="/performance"><i class="list fas fa-tachometer-alt"></i></i>Full performance
-                        analysis</a><br><br>
-                    <table class="table table-sm" style="margin-bottom: 0">
-                        <tr>
-                            <td>Net Profit</td>
-                            <td>2301.36 %</td>
-                        </tr>
-                        <tr>
-                            <td>Daily Return</td>
-                            <td>1.19 %</td>
-                        </tr>
-                        <tr>
-                            <td>Win Rate</td>
-                            <td>56.57 %</td>
-                        </tr>
-                        <tr>
-                            <td>Ratio Win/Loss</td>
-                            <td>10.59</td>
-                        </tr>
-                        <tr>
-                            <td>Total Trades</td>
-                            <td>1429</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-12 alert alert-primary">
-                    <h4>Telegram and Twitter signals</h4>
-                    Instant notification of all signals and daily updates for the current trades.<br><br>
-                    <a href="https://twitter.com/dajohannes" target="_blank"><i class="list fab fa-twitter"></i>Algorithmic
-                        Crypto Twitter</a><br>
-                    <a href="https://t.me/algorithmiccrypto" target="_blank"><i class="list fab fa-telegram"></i>Algorithmic
-                        Crypto Telegram</a>
+            <div class="col-sm-12 col-lg-9 order-lg-first">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="col-12 alert alert-primary">
+                            <h4>Performance</h4>
+                            <a href="#"><i class="list fas fa-tachometer-alt"></i>Full performance
+                                analysis</a><br><br>
+                            <table class="table table-sm" style="margin-bottom: 0">
+                                <tr>
+                                    <td>Daily Return</td>
+                                    <td>{{ "%.2f"|format(performance_sum.daily_return) }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Win Rate</td>
+                                    <td>{{ "%.2f"|format(performance_sum.win_rate) }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Ratio Win/Loss</td>
+                                    <td>{{ "%.2f"|format(performance_sum.win_loss_ratio) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Trades</td>
+                                    <td>{{ performance_sum.total_trades }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-7 order-md-first">
+                        <div class="col-12 alert alert-primary intro">
+                            <h2>Welcome to AlgorithmicCrypto.com</h2>
+                            Free highly profitable algorithmic trading signals optimized for the cryptocurrency market.
+                            Combining <i>stochastic momentum oscillators</i> with <i>volatility</i> as well as
+                            <i>RSI divergence</i> to signal breakouts and trend reversals.<br>
+                            Due to our success using this algorithm we want to share the signals with you. If there are
+                            more
+                            people following specific strategies they are getting even stronger.<br>
+                            In the future we want to enable automated trading for everybody until now join on Telegram
+                            or
+                            Twitter for signals.
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-12 alert alert-primary">
+                            <h4>Telegram and Twitter signals</h4>
+                            Instant notification of all signals and daily updates for the current trades.<br><br>
+                            <a href="https://twitter.com/dajohannes" target="_blank"><i class="list fab fa-twitter"></i>Algorithmic
+                                Crypto Twitter</a><br>
+                            <a href="https://t.me/algorithmiccrypto" target="_blank"><i
+                                    class="list fab fa-telegram"></i>Algorithmic
+                                Crypto Telegram</a>
 
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-12 alert alert-primary">
-                    <h4>Donations</h4>
-                    All signals will remain free. Please support my work with a donation! Thankful for even the smallest
-                    donations.<br><br>
-                    <a href="#" data-toggle="modal" data-target="#btc_donation"><i
-                            class="list fab fa-bitcoin"></i>Bitcoin</a><br>
-                    <a href="#" data-toggle="modal" data-target="#eth_donation"><i class="list fab fa-ethereum"></i>Ethereum</a><br>
-                    <a href="https://paypal.me/johanneskrum" target="_blank"><i
-                            class="list fab fa-paypal"></i>Paypal</a><br>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-12 alert alert-primary">
+                            <h4>Donations</h4>
+                            All signals will remain free. Please support my work with a donation! Thankful for even the
+                            smallest
+                            donations.<br><br>
+                            <a href="#" data-toggle="modal" data-target="#btc_donation"><i
+                                    class="list fab fa-bitcoin"></i>Bitcoin</a><br>
+                            <a href="#" data-toggle="modal" data-target="#eth_donation"><i
+                                    class="list fab fa-ethereum"></i>Ethereum</a><br>
+                            <a href="https://paypal.me/johanneskrum" target="_blank"><i
+                                    class="list fab fa-paypal"></i>Paypal</a><br>
 
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-12 alert alert-primary">
-                    <h4>Contact, Feedback and Contribution</h4>
-                    Send me a message on Telegram, the contact page or per mail. Check out and contribute on the
-                    Github
-                    project.<br><br>
-                    <a href="/contact"><i class="list fas fa-paper-plane"></i>Contact page</a><br>
-                    <a href="mailto:jkrumm@algorithmiccrypto.com" target="_blank"><i
-                            class="list fas fa-envelope"></i>Send
-                        mail</a><br>
-                    <a href="https://t.me/johanneskr" target="_blank"><i class="list fab fa-telegram"></i>Contact on
-                        Telegram</a><br>
-                    <a href="https://github.com/jkrumm/algorithmic-trading" target="_blank"><i
-                            class="list fab fa-github"></i>Github</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-12 alert alert-primary">
+                            <h4>Contact, Feedback and Contribution</h4>
+                            Send me a message on Telegram, the contact page or per mail. Check out and contribute on the
+                            Github
+                            project.<br><br>
+                            <a href="/contact"><i class="list fas fa-paper-plane"></i>Contact page</a><br>
+                            <a href="mailto:jkrumm@algorithmiccrypto.com" target="_blank"><i
+                                    class="list fas fa-envelope"></i>Send
+                                mail</a><br>
+                            <a href="https://t.me/johanneskr" target="_blank"><i class="list fab fa-telegram"></i>Contact
+                                on
+                                Telegram</a><br>
+                            <a href="https://github.com/jkrumm/algorithmic-trading" target="_blank"><i
+                                    class="list fab fa-github"></i>Github</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

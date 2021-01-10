@@ -192,7 +192,7 @@ async def run2():
     tl.delete_many({})
     tl.insert_many(json.loads(trades_latest.T.to_json()).values())
     trades_best = pd.DataFrame.from_dict(transform_cursor(t.find({}))).sort_values(by="current_profit",
-                                                                                   ascending=False).iloc[:3]
+                                                                                   ascending=False).iloc[:5]
     # print(trades_best)
     tb.delete_many({})
     tb.insert_many(json.loads(trades_best.T.to_json()).values())
@@ -204,6 +204,7 @@ async def run1(results=results):
              ["LINKBTC", 720], ["XRPUSD", 720], ["LTCUSD", 720], ["ADAUSD", 720]]):
         print(symbol, ticker)
     res = pd.DataFrame.from_dict(results)
+    res = res[res["index"] != "summary"]
     results_sum = res[
         ["duration_days", "net_profit", "gross_profit", "daily_return", "monthly_return", "yearly_return",
          "buy_hold", "win_rate", "win_loss_ratio", "largest_win"]].copy().max().to_frame().T
@@ -218,7 +219,7 @@ async def run1(results=results):
         ['index', 'first_signal', 'duration_days', 'net_profit', 'gross_profit', 'gross_lost',
          'daily_return', 'monthly_return', 'yearly_return', 'buy_hold', 'total_trades', 'won_trades', 'lost_trades',
          'win_rate', 'win_loss_ratio', 'largest_win', 'largest_lost']]
-    res = res.append(results_sum).sort_values(by="index", ascending=True).reset_index()
+    res = res.append(results_sum).sort_values(by="index", ascending=True).reset_index(drop=True)
 
     p.delete_many({})
     p.insert_many(json.loads(res.T.to_json()).values())
