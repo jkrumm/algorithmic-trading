@@ -2,20 +2,6 @@
 {% block title %}Bitcoin, Ethereum free profitable algorithmic signals{% endblock %}
 {% block content %}
 
-    <div class="alert alert-dismissible alert-warning" id="warning-message">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <div class="flex">
-            <div>
-                <img src="/static/img/flip_phone.png" alt="Flip phone to landscape">
-            </div>
-            <div>
-                <h4 class="alert-heading">Switch to Landscape!</h4>
-                <p class="mb-0">This website looks much better in landscape mode. Please rotate your phone to the
-                    site.</p>
-            </div>
-        </div>
-    </div>
-
     <div class="container-fluid mb-md-2" id="intro">
         <div class="row">
             <div class="col-sm-12 col-lg-3">
@@ -120,16 +106,11 @@
                             <div class="card-header"><h2>Welcome to AlgorithmicCrypto.com</h2></div>
                             <div class="card-body intro">
                                 Free highly profitable algorithmic trading signals optimized for the cryptocurrency
-                                market.
-                                Combining <i>stochastic momentum oscillators</i> with <i>volatility indices</i> as well
-                                as
-                                <i>RSI divergence</i> to signal breakouts and trend reversals.<br>
-                                Due to our success using this algorithm we want to share the signals with you. If there
-                                are
-                                more people following specific strategies they are getting even stronger.<br>
-                                In the future we want to enable automated trading for everybody until now join on
-                                Telegram
-                                or Twitter for signals.
+                                market. Combining <i>stochastic momentum oscillators</i> with <i>volatility indices</i>
+                                as well as<i>RSI divergence</i> to signal breakouts and trend reversals.<br>Due to our
+                                success using this algorithm we want to share the signals with you. If there are more
+                                people following specific strategies they are getting even stronger.<br>In the future we
+                                want to enable automated trading for everybody until now join on Telegram signals.
                             </div>
                         </div>
                     </div>
@@ -260,52 +241,71 @@
         </div>
     </div>
 
-    <h1>Current Trades</h1>
-    <div class="trades-table-wrapper">
-        <div id="no-more-tables">
-            <table class="table table-hover table-striped table-sm table-dark">
-                <thead>
-                <tr>
-                    <th class="">Pair</th>
-                    <th class="">Timeframe</th>
-                    <th class="">Action</th>
-                    <th class="">Duration</th>
-                    <th class="">Date</th>
-                    <th class="numeric">Profitability</th>
-                    <th class="numeric">Price</th>
-                    <th class="numeric">1D</th>
-                    <th class="numeric">1W</th>
-                    <th class="numeric">1M</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for trade in trades %}
-                    <tr>
-                        <td data-title="Pair" class="">{{ trade['symbol'] }}</td>
-                        <td data-title="Timeframe" class="">{{ transform_interval(trade['timeframe']) }}</td>
-                        <td data-title="Action"
-                            class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</td>
-                        <td data-title="Duration" class="">{{ trade['duration'] }}</td>
-                        <td data-title="Date" class="">{{ trade['date'] }}</td>
-                        <td data-title="Profitability"
-                            class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
-                        <td data-title="Price"
-                            class="numeric">{{ "$%.2f"|format(currencies[trade['symbol'][:-3]]['price']|float) }}</td>
-                        <!-- <td class=""> <td class="">{{ "$%.2f"|format(trade['price']|float) }}</td>-->
-                        <td data-title="1D"
-                            class="numeric {{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
-                        <td data-title="1W"
-                            class="numeric {{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
-                        <td data-title="1M"
-                            class="numeric {{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+    <div class="alert alert-dismissible alert-warning" id="warning-message">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="flex">
+            <div>
+                <img src="/static/img/flip_phone.png" alt="Flip phone to landscape">
+            </div>
+            <div>
+                <h4 class="alert-heading">Switch to Landscape!</h4>
+                <p class="mb-0">This website looks much better in landscape mode. Please rotate your phone to the
+                    site.</p>
+            </div>
         </div>
     </div>
 
-    <hr>
+
+
+
+    <h1>Current Trades</h1>
+    <div class="rotate_wrapper">
+        <div class="rotate">
+            <div class="trades-table-wrapper">
+                <!-- <div id="no-more-tables"> -->
+                <table class="table table-hover table-striped table-sm table-dark">
+                    <thead>
+                    <tr>
+                        <th class="">Pair</th>
+                        <th class="">Timeframe</th>
+                        <th class="">Action</th>
+                        <th class="">Duration</th>
+                        <th class="">Date</th>
+                        <th class="numeric">Profitability</th>
+                        <th class="numeric">Price</th>
+                        <th class="numeric">1D</th>
+                        <th class="numeric">1W</th>
+                        <th class="numeric">1M</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for trade in trades %}
+                        <tr>
+                            <td data-title="Pair" class="">{{ trade['symbol'] }}</td>
+                            <td data-title="Timeframe" class="">{{ transform_interval(trade['timeframe']) }}</td>
+                            <td data-title="Action"
+                                class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</td>
+                            <td data-title="Duration" class="">{{ trade['duration'] }}</td>
+                            <td data-title="Date" class="">{{ trade['date'] }}</td>
+                            <td data-title="Profitability"
+                                class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
+                            <td data-title="Price"
+                                class="numeric">{{ "$%.2f"|format(currencies[trade['symbol'][:-3]]['price']|float) }}</td>
+                            <!-- <td class=""> <td class="">{{ "$%.2f"|format(trade['price']|float) }}</td>-->
+                            <td data-title="1D"
+                                class="numeric {{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
+                            <td data-title="1W"
+                                class="numeric {{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
+                            <td data-title="1M"
+                                class="numeric {{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <!-- </div>-->
+            </div>
+        </div>
+    </div>
 
     <h1 id="signal_history">Signal History</h1>
     <div class="form-signal">
