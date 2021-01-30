@@ -1,8 +1,14 @@
-Fabric
-Flask-SQLAlchemy
-Flask-WTF
-WTForms
-coverage
-# ecdsa
-# paramiko
-# pycrypto
+Flask~=1.0.2
+Fabric~=2.5.0
+WTForms~=2.2.1
+asyncio~=3.4.3
+ccxt~=1.18.617
+tinydb~=4.3.0
+python-dateutil~=2.7.3
+pandas~=0.25.1
+tweepy~=3.10.0
+requests~=2.22.0
+python-dotenv~=0.15.0
+backtesting~=0.3.0
+pymongo~=3.8.0
+numpy~=1.17.2

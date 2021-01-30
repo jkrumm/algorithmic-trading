@@ -1,0 +1,39 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Marketcap{% endblock %}
+{% block content %}
+
+    <h1>Marketcap</h1>
+    <div class="trades-table-wrapper">
+        <table class="table table-hover table-sm table-dark">
+            <thead>
+            <tr>
+                <th class="">Pair</th>
+                <th class="">Action</th>
+                <th class="">Timeframe</th>
+                <th class="">Duration</th>
+                <th class="">Date</th>
+                <th class="">Profitability</th>
+                <th class="">Price</th>
+                <th class="">1D</th>
+                <th class="">1W</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for c in currencie %}
+                <tr>
+                    <td class="">{{ c['currency'] }}</td>
+                    <td class="">{{ c['price'] }}</td>
+                    <td class="">{{ c['currency'] }}</td>
+                    <td class="">{{ c['currency'] }}</td>
+                    <td class="">{{ c['currency'] }}</td>
+                    <td class="">{{ c['currency'] }}</td>
+                    <td class="">{{ c['currency'] }}</td>
+                    <td class="">{{ c['currency'] }}</td>
+                    <td class="">{{ c['currency'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

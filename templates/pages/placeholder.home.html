@@ -1,10 +1,521 @@
 {% extends 'layouts/main.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Bitcoin, Ethereum free profitable algorithmic signals{% endblock %}
 {% block content %}
 
-<div class="page-header">
-  <h1>Sticky footer with fixed navbar</h1>
-</div>
-<p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
+    <div class="container-fluid mb-md-2" id="intro">
+        <div class="row">
+            <div class="col-sm-12 col-lg-3">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-12  mb-1 mb-md-3">
+                        <div class="col-12 card text-white bg-primary performance_home trades_intro">
+                            <div class="card-header"><h4>Latest Trades</h4></div>
+                            <div class="card-body">
+                                {% for trade in tl %}
+                                    <div class="trade-sm less">
+                                        <div>
+                                            <div class="title">
+                                                <span>{{ trade['symbol'] }}</span>
+                                                <span>{{ transform_interval(trade['timeframe']) }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <span>{{ trade['duration'] }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-12  mb-1 mb-md-3">
+                        <div class="col-12 card text-white bg-primary performance_home trades_intro">
+                            <div class="card-header"><h4>Most Profitable Trades</h4></div>
+                            <div class="card-body">
+                                {% for trade in tb %}
+                                    <div class="trade-sm">
+                                        <div>
+                                            <div class="title">
+                                                <span>{{ trade['symbol'] }}</span>
+                                                <span>{{ transform_interval(trade['timeframe']) }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <span>{{ trade['duration'] }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-9 order-lg-first">
+                <div class="row">
+                    <div class="col-md-5 mb-1 mb-md-3">
+                        <div class="col-12 card text-white bg-primary performance_home">
+                            <div class="card-header"><h4>Performance</h4></div>
+                            <div class="card-body">
+                                <a href="#" class="mb-1"><i class="list fas fa-tachometer-alt"></i>Full performance
+                                    analysis</a>
+                                <table class="table table-sm" style="margin-bottom: 0">
+                                    <tr>
+                                        <td>Daily Return</td>
+                                        <td>{{ "%.2f"|format(performance_sum.daily_return) }}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Win Rate</td>
+                                        <td>{{ "%.2f"|format(performance_sum.win_rate) }}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ratio Win/Loss</td>
+                                        <td>{{ "%.2f"|format(performance_sum.win_loss_ratio) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Average Profit</td>
+                                        <td>{{ "%.2f"|format(performance_sum.avg) }}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Average Days</td>
+                                        <td>{{ "%.2f"|format(performance_sum.avg_days) }} D</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Trades</td>
+                                        <td>{{ performance_sum.total_trades }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 order-md-first  mb-1 mb-md-3">
+                        <div class="col-12 card text-white bg-primary">
+                            <div class="card-header"><h2>Welcome to AlgorithmicCrypto.com</h2></div>
+                            <div class="card-body intro">
+                                Free highly profitable algorithmic trading signals optimized for the cryptocurrency
+                                market. Combining <i>stochastic momentum oscillators</i> with <i>volatility indices</i>
+                                as well as<i>RSI divergence</i> to signal breakouts and trend reversals.<br>Due to our
+                                success using this algorithm we want to share the signals with you. If there are more
+                                people following specific strategies they are getting even stronger.<br>In the future we
+                                want to enable automated trading for everybody until now join on Telegram signals.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-none d-md-inline-flex">
+                        <div class="col-12 card text-white bg-primary">
+                            <div class="card-header"><h4>Telegram and Twitter signals</h4></div>
+                            <div class="card-body">
+                                Instant notification of all signals and daily updates for the current trades.<br><br>
+                                <a href="https://twitter.com/dajohannes" target="_blank"><i
+                                        class="list fab fa-twitter"></i>Algorithmic
+                                    Crypto Twitter</a>
+                                <a href="https://t.me/algorithmiccrypto" target="_blank"><i
+                                        class="list fab fa-telegram"></i>Algorithmic
+                                    Crypto Telegram</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-none d-md-inline-flex">
+                        <div class="col-12 card text-white bg-primary">
+                            <div class="card-header"><h4>Donations</h4></div>
+                            <div class="card-body">All signals will remain free. Please support my work with a
+                                donation! Thankful for even the smallest donations.<br><br>
+                                <a href="#" data-toggle="modal" data-target="#btc_donation"><i
+                                        class="list fab fa-bitcoin"></i>Bitcoin</a>
+                                <a href="#" data-toggle="modal" data-target="#eth_donation"><i
+                                        class="list fab fa-ethereum"></i>Ethereum</a>
+                                <a href="https://paypal.me/johanneskrum" target="_blank"><i
+                                        class="list fab fa-paypal"></i>Paypal</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-none d-md-inline-flex">
+                        <div class="col-12 card text-white bg-primary performance_home">
+                            <div class="card-header"><h4>Contact and Feedback</h4></div>
+                            <div class="card-body">
+                                Send me a message on Telegram, the contact page or per mail. Check out and contribute on
+                                the
+                                Github
+                                project.<br><br>
+                                <a href="/contact"><i class="list fas fa-paper-plane"></i>Contact page</a>
+                                <a href="mailto:jkrumm@algorithmiccrypto.com" target="_blank"><i
+                                        class="list fas fa-envelope"></i>Send
+                                    mail</a>
+                                <a href="https://t.me/johanneskr" target="_blank"><i class="list fab fa-telegram"></i>Contact
+                                    on
+                                    Telegram</a>
+                                <a href="https://github.com/jkrumm/algorithmic-trading" target="_blank"><i
+                                        class="list fab fa-github"></i>Github</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion d-md-none" id="accordionHome">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Telegram and Twitter signals</h4>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    Instant notification of all signals and daily updates for the current trades.<br><br>
+                    <a href="https://twitter.com/dajohannes" target="_blank"><i class="list fab fa-twitter"></i>Algorithmic
+                        Crypto Twitter</a>
+                    <a href="https://t.me/algorithmiccrypto" target="_blank"><i
+                            class="list fab fa-telegram"></i>Algorithmic
+                        Crypto Telegram</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <h4>Donations</h4>
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    All signals will remain free. Please support my work with a donation! Thankful for even the
+                    smallest
+                    donations.<br><br>
+                    <a href="#" data-toggle="modal" data-target="#btc_donation"><i
+                            class="list fab fa-bitcoin"></i>Bitcoin</a>
+                    <a href="#" data-toggle="modal" data-target="#eth_donation"><i
+                            class="list fab fa-ethereum"></i>Ethereum</a>
+                    <a href="https://paypal.me/johanneskrum" target="_blank"><i
+                            class="list fab fa-paypal"></i>Paypal</a><br>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <h4>Contact, Feedback and Contribution</h4>
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    Send me a message on Telegram, the contact page or per mail. Check out and contribute on the
+                    Github
+                    project.<br><br>
+                    <a href="/contact"><i class="list fas fa-paper-plane"></i>Contact page</a><br>
+                    <a href="mailto:jkrumm@algorithmiccrypto.com" target="_blank"><i
+                            class="list fas fa-envelope"></i>Send
+                        mail</a>
+                    <a href="https://t.me/johanneskr" target="_blank"><i class="list fab fa-telegram"></i>Contact
+                        on
+                        Telegram</a>
+                    <a href="https://github.com/jkrumm/algorithmic-trading" target="_blank"><i
+                            class="list fab fa-github"></i>Github</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-dismissible alert-warning" id="warning-message">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="flex">
+            <div>
+                <img src="/static/img/flip_phone.png" alt="Flip phone to landscape">
+            </div>
+            <div>
+                <h4 class="alert-heading">Switch to Landscape!</h4>
+                <p class="mb-0">This website looks much better in landscape mode. Please rotate your phone to the
+                    site.</p>
+            </div>
+        </div>
+    </div>
+
+    <h1>Current Trades</h1>
+    <div class="rotate_wrapper">
+        <div class="rotate">
+            <div class="trades-table-wrapper">
+                <!-- <div id="no-more-tables"> -->
+                <table class="table table-hover table-striped table-sm table-dark">
+                    <thead>
+                    <tr>
+                        <th class="">Pair</th>
+                        <th class="">Timeframe</th>
+                        <th class="">Action</th>
+                        <th class="">Duration</th>
+                        <th class="">Date</th>
+                        <th class="numeric">Profitability</th>
+                        <th class="numeric">Price</th>
+                        <th class="numeric">1D</th>
+                        <th class="numeric">1W</th>
+                        <th class="numeric">1M</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for trade in trades %}
+                        <tr>
+                            <td data-title="Pair" class="">{{ trade['symbol'] }}</td>
+                            <td data-title="Timeframe" class="">{{ transform_interval(trade['timeframe']) }}</td>
+                            <td data-title="Action"
+                                class="{{ 'green' if trade['action'] == "buy" else 'red' }} uppercase">{{ trade['action'] }}</td>
+                            <td data-title="Duration" class="">{{ trade['duration'] }}</td>
+                            <td data-title="Date" class="">{{ trade['date'] }}</td>
+                            <td data-title="Profitability"
+                                class="numeric {{ 'green' if trade['current_profit'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['current_profit']/100) }}</td>
+                            <td data-title="Price"
+                                class="numeric">{{ "$%.2f"|format(currencies[trade['symbol'][:-3]]['price']|float) }}</td>
+                            <!-- <td class=""> <td class="">{{ "$%.2f"|format(trade['price']|float) }}</td>-->
+                            <td data-title="1D"
+                                class="numeric {{ 'green' if trade['1d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['1d']/100) }}</td>
+                            <td data-title="1W"
+                                class="numeric {{ 'green' if trade['7d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['7d']/100) }}</td>
+                            <td data-title="1M"
+                                class="numeric {{ 'green' if trade['30d'] > 0 else 'red' }}">{{ "{:.2%}".format(trade['30d']/100) }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <!-- </div>-->
+            </div>
+        </div>
+    </div>
+
+    <h1 id="signal_history">Signal History</h1>
+    <div class="form-signal">
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <h5>Filter Signals</h5>
+                    <div class="form-check form-check-inline" id="buy_sell">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio11"
+                               value="buy_sell" {{ "checked" if request.args.get('action') == "buy_sell" or request.args.get('action') == None }}>
+                        <label class="form-check-label" for="inlineRadio11">Longs and Shorts</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="buy">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio12"
+                               value="buy" {{ "checked" if request.args.get('action') == "buy" }}>
+                        <label class="form-check-label" for="inlineRadio12">Only longs</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="sell">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio13"
+                               value="sell" {{ "checked" if request.args.get('action') == "sell" }}>
+                        <label class="form-check-label" for="inlineRadio13">Only shorts</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <h5>Timespan</h5>
+                    <div class="form-check form-check-inline" id="time_0">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                               value="0" {{ "checked" if request.args.get('timespan') == "0" or request.args.get('timespan') == None }}>
+                        <label class="form-check-label" for="inlineRadio1">All</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="time_1">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                               value="365" {{ "checked" if request.args.get('timespan') == "365" }}>
+                        <label class="form-check-label" for="inlineRadio2">1 Year</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="time_2">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                               value="730" {{ "checked" if request.args.get('timespan') == "730" }}>
+                        <label class="form-check-label" for="inlineRadio3">2 Years</label>
+                    </div>
+                    <div class="form-check form-check-inline" id="time_5">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                               value="1825" {{ "checked" if request.args.get('timespan') == "1825" }}>
+                        <label class="form-check-label" for="inlineRadio4">5 Years</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="coin-list-wrapper">
+        <div id="BTCUSD_8H"
+             class="{{ "active" if (request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "480") }}">
+            <h3>BTCUSD</h3>
+            <span>8H</span>
+        </div>
+        <div id="BTCUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "720" }}">
+            <h3>BTCUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="BTCUSD_1D"
+             class="{{ "active" if request.args.get('symbol') == "BTCUSD" and request.args.get('interval') == "1" }}">
+            <h3>BTCUSD</h3>
+            <span>1D</span>
+        </div>
+        <div id="ETHUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "ETHUSD" and request.args.get('interval') == "720" or request.args.get('symbol') == None }}">
+            <h3>ETHUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="ETHBTC_12H"
+             class="{{ "active" if request.args.get('symbol') == "ETHBTC" and request.args.get('interval') == "720" }}">
+            <h3>ETHBTC</h3>
+            <span>12H</span>
+        </div>
+        <div id="LINKUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "LINKUSD" and request.args.get('interval') == "720" }}">
+            <h3>LINKUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="LINKBTC_12H"
+             class="{{ "active" if request.args.get('symbol') == "LINKBTC" and request.args.get('interval') == "720" }}">
+            <h3>LINKBTC</h3>
+            <span>12H</span>
+        </div>
+        <div id="XRPUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "XRPUSD" and request.args.get('interval') == "720" }}">
+            <h3>XRPUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="LTCUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "LTCUSD" and request.args.get('interval') == "720" }}">
+            <h3>LTCUSD</h3>
+            <span>12H</span>
+        </div>
+        <div id="ADAUSD_12H"
+             class="{{ "active" if request.args.get('symbol') == "ADAUSD" and request.args.get('interval') == "720" }}">
+            <h3>ADAUSD</h3>
+            <span>12H</span>
+        </div>
+    </div>
+    <div class="signal-wrapper">
+        <div class="signal-summary-wrapper">
+            <h4>{{ performance.ticker }} {{ transform_interval(performance.timeframe) }}
+                <span>{{ performance.type }} | {{ performance.duration_days|int }} days</span></h4>
+            <table class="table table-dark table-sm table-hover table-striped" style="margin-bottom: 0">
+                <tr>
+                    <td>Total Trades</td>
+                    <td>{{ performance.total_trades }}</td>
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>{{ performance.duration_days|int }} days</td>
+                </tr>
+                <tr>
+                    <td>Win Rate</td>
+                    <td>{{ "%.2f"|format(performance.win_rate) }}%</td>
+                </tr>
+                <tr>
+                    <td>Ratio Win/Loss</td>
+                    <td>{{ "%.2f"|format(performance.win_loss_ratio) }}</td>
+                </tr>
+                <tr>
+                    <td>Net Profit</td>
+                    <td>{{ "%.2f"|format(performance.net_profit) }}%</td>
+                </tr>
+                <tr>
+                    <td>Gross Profit</td>
+                    <td>{{ "%.2f"|format(performance.gross_profit) }}%</td>
+                </tr>
+                <tr>
+                    <td>Gross Lost</td>
+                    <td>{{ "%.2f"|format(performance.gross_lost) }}%</td>
+                </tr>
+                <tr>
+                    <td>Daily Return</td>
+                    <td>{{ "%.2f"|format(performance.daily_return) }}%</td>
+                </tr>
+                <tr>
+                    <td>Monthly Return</td>
+                    <td>{{ "%.2f"|format(performance.monthly_return) }}%</td>
+                </tr>
+                <tr>
+                    <td>Yearly Return</td>
+                    <td>{{ "%.2f"|format(performance.yearly_return) }}%</td>
+                </tr>
+
+                <tr>
+                    <td>Largest Win</td>
+                    <td>{{ "%.2f"|format(performance.largest_win) }}%</td>
+                </tr>
+                <tr>
+                    <td>Largest Loss</td>
+                    <td>{{ "%.2f"|format(performance.largest_lost) }}%</td>
+                </tr>
+                <tr>
+                    <td>Won Trades</td>
+                    <td>{{ performance.won_trades }}</td>
+                </tr>
+                <tr>
+                    <td>Lost Trades</td>
+                    <td>{{ performance.lost_trades }}</td>
+                </tr>
+                <tr>
+                    <td>Average Profit</td>
+                    <td>{{ "%.2f"|format(performance.avg) }}%</td>
+                </tr>
+                <tr>
+                    <td>Average Profit Won</td>
+                    <td>{{ "%.2f"|format(performance.avg_win) }}%</td>
+                </tr>
+                <tr>
+                    <td>Average Profit Loss</td>
+                    <td>{{ "%.2f"|format(performance.avg_lost) }}%</td>
+                </tr>
+                <tr>
+                    <td>Average Days in trade</td>
+                    <td>{{ "%.2f"|format(performance.avg_days) }} days</td>
+                </tr>
+            </table>
+        </div>
+        <div class="signals-table-wrapper">
+            <div id="no-more-tables">
+                <table class="table table-hover table-sm table-dark table-striped">
+                    <thead>
+                    <tr>
+                        <th class="">Pair</th>
+                        <th class="">Timeframe</th>
+                        <th class="">Action</th>
+                        <th class="">Date</th>
+                        <th class="">Profitability</th>
+                        <th class="">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for s in signal|reverse %}
+                        <tr>
+                            <td data-title="Pair" class="">{{ s['ticker'] }}</td>
+                            <td data-title="Timeframe" class="">{{ transform_interval(s['interval']) }}</td>
+                            <td data-title="Action"
+                                class="{{ 'green' if s['action'] == "buy" else 'red' }} uppercase">{{ s['action'] }}</td>
+                            <td data-title="Date" class="">{{ s['time'] }}</td>
+                            <td data-title="Profitability"
+                                class="{{ 'green' if s['profit'] > 0 else 'red' }}">{{ "%.2f"|format(s['profit']|float) }}%
+                            </td>
+                            <td data-title="Price" class="">{{ "$%.2f"|format(s['price']|float) }}$</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
