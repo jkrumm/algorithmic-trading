@@ -1,11 +1,14 @@
 import ccxt
 import json
+import time
 
 from config import MY_KRAKEN_DE_KEY, MY_KRAKEN_DE_SECRET, MY_BTC_TELEGRAM_TOKEN, MY_BTC_TELEGRAM_ID
 import requests
 
 
 def trade_btc_bot(trade, action):
+    start_time = time.time()
+
     kraken = ccxt.kraken({
         'apiKey': MY_KRAKEN_DE_KEY,
         'secret': MY_KRAKEN_DE_SECRET,
@@ -26,7 +29,8 @@ def trade_btc_bot(trade, action):
         'settle_position_order': {},
         'settle_position_balance': {},
         'trade': {},
-        'new_balance': {}
+        'new_balance': {},
+        'time': 0
     }
 
     kraken.load_markets()
@@ -114,9 +118,10 @@ def trade_btc_bot(trade, action):
     balance_usd = update_balance_usd(kraken)
     balance_btc = update_balance_btc(kraken)
     output['new_balance'] = balance_dict(balance_usd, balance_btc)
+    output['time'] = time.time() - start_time
     print(str(json.dumps(output, indent=2)))
-    trade_btc_bot_telegram_bot_sendtext(str(output['trade']))
-    trade_btc_bot_telegram_bot_sendtext(str(json.dumps(output, indent=2)))
+    trade_btc_bot_telegram_bot_sendtext(str(output['trade']) + " // " + str(output['new_balance']['USD']))
+    trade_btc_bot_telegram_bot_sendtext(str(json.dumps(output, indent=1)))
     return output
 
 
