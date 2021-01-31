@@ -159,7 +159,7 @@ def trade_btc_12h_bot():
     if content['trade'] != "True":
         trade_btc_bot_telegram_bot_sendtext("No Trading")
         return "No Trading"
-    if content['action'] != "True":
+    if content['action'] != "buy" or content['action'] != "sell":
         trade_btc_bot_telegram_bot_sendtext("No Action")
         return "No Action"
     return jsonify(trade_btc_bot(True, content['action']))
