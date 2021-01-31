@@ -157,10 +157,10 @@ def trade_btc_12h_bot():
         trade_btc_bot_telegram_bot_sendtext("Unauthorized")
         return "Unauthorized"
     if content['trade'] != "True":
-        trade_btc_bot_telegram_bot_sendtext("No Trading")
+        trade_btc_bot_telegram_bot_sendtext("No Trading : " + content['trade'])
         return "No Trading : " + content['trade']
-    if content['action'] != "buy" or content['action'] != "sell":
-        trade_btc_bot_telegram_bot_sendtext("No Action")
+    if content['action'] != "buy" and content['action'] != "sell":
+        trade_btc_bot_telegram_bot_sendtext("No Action : " + content['action'])
         return "No Action : " + content['action']
     return jsonify(trade_btc_bot(True, content['action']))
 
