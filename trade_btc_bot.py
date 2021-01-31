@@ -26,8 +26,6 @@ def trade_btc_bot(trade, action):
         'btc_price': 0,
         'balance': {},
         'settle_position': {},
-        'settle_position_order': {},
-        'settle_position_balance': {},
         'trade': {},
         'new_balance': {},
         'time': 0
@@ -44,8 +42,6 @@ def trade_btc_bot(trade, action):
             'sell_order_btc': {},
             'sell_order_btc_balance': {},
             'settle_position': {},
-            'settle_position_order': {},
-            'settle_position_balance': {},
             'trade': {},
             'new_balance': {}
         }
@@ -72,21 +68,10 @@ def trade_btc_bot(trade, action):
 
             if open_order_type == 'buy':
                 output['settle_position'] = kraken.create_order(
-                    'BTC/USD', 'settle-position', 'buy', open_order_vol, None, {'leverage': 3})['info']['descr'][
-                    'order']
-                balance_btc = update_balance_btc(kraken)
-                output['settle_position_order'] = kraken.create_order(
-                    'BTC/USD', 'market', 'sell', balance_btc)['info']['descr']['order']
+                    'BTC/USD', 'market', 'sell', open_order_vol, None, {'leverage': 3})['info']['descr']['order']
             else:
-                output['settle_position_order'] = kraken.create_order(
-                    'BTC/USD', 'market', 'buy', open_order_vol)['info']['descr']['order']
                 output['settle_position'] = kraken.create_order(
-                    'BTC/USD', 'settle-position', 'sell', open_order_vol, None, {'leverage': 2})['info']['descr'][
-                    'order']
-
-            balance_usd = update_balance_usd(kraken)
-            balance_btc = update_balance_btc(kraken)
-            output['settle_position_balance'] = balance_dict(balance_usd, balance_btc)
+                    'BTC/USD', 'market', 'buy', open_order_vol, None, {'leverage': 2})['info']['descr']['order']
 
         btc_price = kraken.fetch_ticker('BTC/USD')['close']
         output['btc_price'] = btc_price
@@ -96,22 +81,14 @@ def trade_btc_bot(trade, action):
             output['trade'] = kraken.create_market_buy_order(
                 'BTC/USD', (balance_usd * 3 * 0.7) / btc_price,
                 {
-                    'leverage': 3,
-                    'close': {
-                        'ordertype': 'stop-loss',
-                        'price': kraken.fetch_ticker('BTC/USD')['close'] * 0.93
-                    }
+                    'leverage': 3
                 }
             )['info']['descr']['order']
         else:
             output['trade'] = kraken.create_market_sell_order(
                 'BTC/USD', (balance_usd * 2 * 0.5) / btc_price,
                 {
-                    'leverage': 2,
-                    'close': {
-                        'ordertype': 'stop-loss',
-                        'price': kraken.fetch_ticker('BTC/USD')['close'] * 1.07
-                    }
+                    'leverage': 2
                 }
             )['info']['descr']['order']
 
@@ -121,15 +98,13 @@ def trade_btc_bot(trade, action):
     output['time'] = time.time() - start_time
     print(str(json.dumps(output, indent=2)))
     trade_btc_bot_telegram_bot_sendtext(str(output['trade']) + " // " + str(output['new_balance']['USD']))
-    trade_btc_bot_telegram_bot_sendtext(str(json.dumps(output, indent=1)))
+    trade_btc_bot_telegram_bot_sendtext(str(output))
     return output
 
 
 def trade_btc_bot_telegram_bot_sendtext(bot_message):
     send_text = 'https://api.telegram.org/bot' + MY_BTC_TELEGRAM_TOKEN + '/sendMessage?chat_id=' + MY_BTC_TELEGRAM_ID + '&parse_mode=Markdown&text=' + bot_message
-
     response = requests.get(send_text)
-
     return response.json()
 
 
@@ -143,3 +118,6 @@ def update_balance_btc(kraken):
 
 def update_balance_usd(kraken):
     return float(kraken.fetch_balance()["info"]['ZUSD'])
+
+
+trade_btc_bot(True, "buy")

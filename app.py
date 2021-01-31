@@ -162,8 +162,8 @@ def trade_btc_12h_bot():
     if content['action'] != "buy" and content['action'] != "sell":
         trade_btc_bot_telegram_bot_sendtext("No Action : " + content['action'])
         return "No Action : " + content['action']
-    trade_btc_bot(True, content['action'])
-    return content["action"] + " BTC trade executed!"
+    trade_btc_bot_telegram_bot_sendtext("Triggered : " + content["action"])
+    return trade_btc_bot(True, content['action'])
 
 
 @app.route('/postTelegram', methods=['POST'])
