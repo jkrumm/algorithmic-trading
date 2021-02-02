@@ -10,7 +10,7 @@ import requests
 
 def trade_btc_bot(action, user):
     try:
-        trade_btc_bot_telegram_bot_sendtext("Thread started : " + action + " | " + user['name'])
+        trade_btc_bot_telegram_bot_sendtext("Execute trade btc bot : " + action + " | " + user['name'])
         start_time = time.time()
 
         kraken = ccxt.kraken({
@@ -110,7 +110,7 @@ def trade_btc_bot(action, user):
     except Exception as e:
         print(e)
         trade_btc_bot_telegram_bot_sendtext("Exception executing trade : " + user['name'])
-        trade_btc_bot_telegram_bot_sendtext(e)
+        trade_btc_bot_telegram_bot_sendtext(str(e))
         return e
 
 
@@ -137,4 +137,3 @@ def run_trade_btc_bot(action):
     for user in kraken_users:
         results.append(trade_btc_bot(action, user))
     trade_btc_bot_telegram_bot_sendtext(str(results))
-    sys.exit()
