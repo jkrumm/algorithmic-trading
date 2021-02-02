@@ -15,7 +15,7 @@ from threading import Thread
 # ----------------------------------------------------------------------------#
 # App Config.
 # ----------------------------------------------------------------------------#
-from config import SECRET_KEY, SECRET_KEY_TRADE_BTC
+from config import SECRET_KEY, SECRET_KEY_TRADE_BTC, ENV
 from utils.helper import transform_cursor, telegram_bot_sendtext, transform_interval, twitter_init, tweet, \
     map_currencies_to_dict, transform_cursor_dict
 from trade_btc_bot import run_trade_btc_bot, trade_btc_bot_telegram_bot_sendtext
@@ -154,6 +154,7 @@ def test_post_signal_v1():
 @app.route('/tradeBtc', methods=['POST'])
 def trade_btc_12h_bot():
     content = request.get_json()
+    trade_btc_bot_telegram_bot_sendtext("Triggered : " + content['action'])
     if content['secret'] != SECRET_KEY_TRADE_BTC:
         trade_btc_bot_telegram_bot_sendtext("Unauthorized")
         return "Unauthorized"
@@ -163,11 +164,16 @@ def trade_btc_12h_bot():
     if content['action'] != "buy" and content['action'] != "sell":
         trade_btc_bot_telegram_bot_sendtext("No Action : " + content['action'])
         return "No Action : " + content['action']
-    action = content['action']
-    trade_btc_bot_telegram_bot_sendtext("Triggered : " + action)
-    thread = Thread(target=run_trade_btc_bot, args=(action,))
-    thread.start()
-    return "Triggered : " + content["action"]
+    try:
+        action = content['action']
+        thread = Thread(target=run_trade_btc_bot, args=(action,))
+        thread.start()
+    except Exception as e:
+        print(e)
+        trade_btc_bot_telegram_bot_sendtext("Exception spawning btc trade bot :")
+        trade_btc_bot_telegram_bot_sendtext(e)
+        return e
+    return '🤖📈 BUY | ' + ENV if content['action'] == "buy" else '🤖📉 SELL | ' + ENV
 
 
 @app.route('/postTelegram', methods=['POST'])

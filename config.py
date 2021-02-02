@@ -14,6 +14,7 @@ DEBUG = True
 
 # Secret key for session management. You can generate random strings here:
 # https://randomkeygen.com/
+ENV = os.getenv("ENV")
 SECRET_KEY = os.getenv("SECRET_KEY")
 SECRET_KEY_TRADE_BTC = os.getenv("SECRET_KEY_TRADE_BTC")
 MY_KRAKEN_DE_KEY = os.getenv("MY_KRAKEN_DE_KEY")
