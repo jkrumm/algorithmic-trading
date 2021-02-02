@@ -1,5 +1,7 @@
+import json
 import os
 from dotenv import load_dotenv
+from utils.secrets import get_kraken_users
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(os.path.join(BASE_DIR, "algorithmic-trading", ".env"))
@@ -28,3 +30,5 @@ consumer_key = os.getenv("consumer_key")
 consumer_secret = os.getenv("consumer_secret")
 access_token = os.getenv("access_token")
 access_token_secret = os.getenv("access_token_secret")
+
+kraken_users = get_kraken_users()

@@ -1,6 +1,7 @@
 # ----------------------------------------------------------------------------#
 # Imports
 # ----------------------------------------------------------------------------#
+import json
 from datetime import datetime
 
 import dateutil.parser as parser
@@ -9,6 +10,7 @@ from flask_fontawesome import FontAwesome
 import logging
 from logging import Formatter, FileHandler
 from flask_pymongo import PyMongo
+from threading import Thread
 
 # ----------------------------------------------------------------------------#
 # App Config.
@@ -16,7 +18,7 @@ from flask_pymongo import PyMongo
 from config import SECRET_KEY, SECRET_KEY_TRADE_BTC
 from utils.helper import transform_cursor, telegram_bot_sendtext, transform_interval, twitter_init, tweet, \
     map_currencies_to_dict, transform_cursor_dict
-from trade_btc_bot import trade_btc_bot, trade_btc_bot_telegram_bot_sendtext
+from trade_btc_bot import run_trade_btc_bot, trade_btc_bot_telegram_bot_sendtext
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -152,7 +154,6 @@ def test_post_signal_v1():
 @app.route('/tradeBtc', methods=['POST'])
 def trade_btc_12h_bot():
     content = request.get_json()
-    print(request.get_json())
     if content['secret'] != SECRET_KEY_TRADE_BTC:
         trade_btc_bot_telegram_bot_sendtext("Unauthorized")
         return "Unauthorized"
@@ -162,8 +163,11 @@ def trade_btc_12h_bot():
     if content['action'] != "buy" and content['action'] != "sell":
         trade_btc_bot_telegram_bot_sendtext("No Action : " + content['action'])
         return "No Action : " + content['action']
-    trade_btc_bot_telegram_bot_sendtext("Triggered : " + content["action"])
-    return trade_btc_bot(True, content['action'])
+    action = content['action']
+    trade_btc_bot_telegram_bot_sendtext("Triggered : " + action)
+    thread = Thread(target=run_trade_btc_bot, args=(action,))
+    thread.start()
+    return "Triggered : " + content["action"]
 
 
 @app.route('/postTelegram', methods=['POST'])

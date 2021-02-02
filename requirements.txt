@@ -10,7 +10,7 @@ WTForms~=2.2.1
 python-dotenv~=0.15.0
 fabric~=2.5.0
 asyncio~=3.4.3
-ccxt~=1.18.1367
+ccxt~=1.41.47
 Backtesting~=0.3.1
 telegram
 dnspython

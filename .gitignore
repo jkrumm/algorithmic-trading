@@ -8,3 +8,4 @@ db.json
 *.env
 /static/backtest/
 /ohlc/**
+/utils/secrets.py
