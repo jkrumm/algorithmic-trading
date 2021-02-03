@@ -70,6 +70,11 @@ def trade_btc_bot(action, user):
             open_order_type = open_order['info']['type']
             open_order_vol = open_order['info']['vol']
 
+            if open_order_type == action:
+                response = "Already running trade! : " + action + " | " + user
+                trade_btc_bot_telegram_bot_sendtext(response)
+                return response
+
             if open_order_type == 'buy':
                 output['settle_position'] = kraken.create_order(
                     'BTC/USD', 'market', 'sell', open_order_vol, None, {'leverage': 3})['info']['descr']['order']
